@@ -9,7 +9,7 @@ const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-x-clip bg-[#030304] pt-20 pb-24">
+        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-x-clip bg-[#030304] pt-16 sm:pt-20 pb-16 sm:pb-24 px-4 sm:px-6">
 
             {/* Ambient Background Glows — strong enough to be clearly visible */}
             <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1400px] h-[900px] opacity-[0.35] blur-[100px] pointer-events-none"
@@ -50,7 +50,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.1, ease }}
-                    className="text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] font-semibold tracking-tighter text-white leading-[0.95] mb-[min(2rem,3vh)] text-balance max-w-5xl"
+                    className="text-4xl sm:text-6xl md:text-7xl lg:text-[7rem] font-semibold tracking-tighter text-white leading-[0.95] mb-[min(2rem,3vh)] text-balance max-w-5xl"
                 >
                     One question.<br />
                     One conversation.<br />
@@ -65,7 +65,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2, ease }}
-                    className="text-lg sm:text-xl md:text-2xl text-[#8A8A93] max-w-2xl mx-auto leading-relaxed text-balance mb-[min(3rem,4vh)]"
+                    className="text-base sm:text-xl md:text-2xl text-[#8A8A93] max-w-2xl mx-auto leading-relaxed text-balance mb-[min(2.5rem,4vh)]"
                 >
                     Every day, the world debates.<br />
                     No feed. No noise. Just <span className="text-white font-bold">one question that matters</span>.
@@ -76,7 +76,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.3, ease }}
-                    className="flex flex-col sm:flex-row items-center gap-4 mb-20 md:mb-28"
+                    className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-16 sm:mb-20 md:mb-28"
                 >
                     {/* Download Button — Premium CSS glow */}
                     <a

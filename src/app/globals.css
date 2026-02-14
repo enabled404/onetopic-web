@@ -334,46 +334,86 @@ body {
 }
 
 /* ==========================================
-   SIRI BLOB — Small (badge)
+   SIRI BLOB — Gaseous morphing blob
    ========================================== */
 .siri-blob {
   position: relative;
   border-radius: 50%;
   flex-shrink: 0;
+  animation: siri-morph 6s ease-in-out infinite;
+  filter: blur(0.5px);
 }
 
 .siri-blob-layer {
   position: absolute;
-  inset: 0;
+  inset: -15%;
   border-radius: 50%;
 }
 
 .siri-blob-layer-1 {
   background: radial-gradient(circle at 30% 30%, #FF8A65, #E8604C 50%, #C62828);
-  animation: siri-spin 3s linear infinite;
+  animation: siri-morph 4s ease-in-out infinite, siri-spin 3s linear infinite;
+  opacity: 0.9;
 }
 
 .siri-blob-layer-2 {
   background: radial-gradient(circle at 70% 40%, #FFB74D, #FF7043 50%, transparent 80%);
   mix-blend-mode: screen;
-  animation: siri-spin 4s linear infinite reverse;
-  opacity: 0.8;
+  animation: siri-morph-alt 5s ease-in-out infinite reverse, siri-spin 4s linear infinite reverse;
+  opacity: 0.7;
 }
 
 .siri-blob-layer-3 {
   background: radial-gradient(circle at 40% 70%, #F48FB1, #E040FB 50%, transparent 80%);
   mix-blend-mode: screen;
-  animation: siri-spin 5s linear infinite;
-  opacity: 0.5;
+  animation: siri-morph 6s ease-in-out infinite, siri-spin 5s linear infinite;
+  opacity: 0.45;
 }
 
 .siri-blob-glow {
   position: absolute;
-  inset: -50%;
+  inset: -80%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(232, 96, 76, 0.4), rgba(255, 120, 80, 0.15) 40%, transparent 60%);
+  background: radial-gradient(circle, rgba(232, 96, 76, 0.5), rgba(255, 120, 80, 0.15) 40%, transparent 60%);
   animation: siri-glow-pulse 3s ease-in-out infinite alternate;
   z-index: -1;
+  filter: blur(2px);
+}
+
+@keyframes siri-morph {
+
+  0%,
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 40% 70% 60%;
+  }
+
+  75% {
+    border-radius: 40% 60% 50% 40% / 60% 30% 60% 40%;
+  }
+}
+
+@keyframes siri-morph-alt {
+
+  0%,
+  100% {
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  }
+
+  33% {
+    border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+  }
+
+  66% {
+    border-radius: 50% 50% 30% 70% / 60% 40% 60% 30%;
+  }
 }
 
 @keyframes siri-spin {
@@ -390,7 +430,7 @@ body {
 
   100% {
     opacity: 1;
-    transform: scale(1.15);
+    transform: scale(1.2);
   }
 }
 

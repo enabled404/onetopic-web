@@ -31,7 +31,7 @@ export default function Philosophy() {
                         viewport={{ once: true }} transition={{ delay: 0.35 }}
                         className="flex items-center justify-center gap-6 my-12">
                         <div className="w-24 h-px bg-white/[0.1]" />
-                        <AuroraOrb size={16} />
+                        <AuroraOrb size={40} />
                         <div className="w-24 h-px bg-white/[0.1]" />
                     </motion.div>
 
