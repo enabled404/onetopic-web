@@ -46,7 +46,7 @@ export default function Navbar() {
 
                 {/* CTA + hamburger */}
                 <div className="flex items-center gap-3 shrink-0">
-                    <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="hidden sm:inline-flex btn-liquid-wrap">
+                    <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex btn-liquid-wrap">
                         <span className="btn-liquid-inner !py-[9px] !px-5 !text-[13px]">Download</span>
                     </a>
 

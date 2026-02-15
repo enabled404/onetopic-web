@@ -50,7 +50,7 @@ export default function PhoneMockup() {
             onMouseMove={onMove}
             onMouseEnter={onEnter}
             onMouseLeave={onLeave}
-            className="relative w-full max-w-[280px] mx-auto cursor-default"
+            className="relative w-full max-w-[240px] sm:max-w-[280px] mx-auto cursor-default"
             style={{ perspective: "700px" }}
         >
             {/* ── WARM BACKGROUND AURA — makes phone pop against dark bg ── */}
