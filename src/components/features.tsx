@@ -62,7 +62,7 @@ export default function Features() {
                     <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }} transition={{ delay: 0.35 }}
                         className="mt-6 text-lg text-[#8A8A93] leading-relaxed text-center max-w-2xl mx-auto">
-                        One question. One day. Seven billion perspectives. No algorithm. No followers. No bullshit.
+                        One question. One day. Seven billion perspectives. <span className="text-white font-bold">No algorithm. No followers. No bullshit.</span>
                     </motion.p>
                 </div>
 
