@@ -50,7 +50,7 @@ export default function PhoneMockup() {
             onMouseMove={onMove}
             onMouseEnter={onEnter}
             onMouseLeave={onLeave}
-            className="relative w-full max-w-[280px] mx-auto cursor-default"
+            className="relative w-full max-w-[300px] mx-auto cursor-default"
             style={{ perspective: "700px" }}
         >
             {/* ── WARM BACKGROUND AURA — makes phone pop against dark bg ── */}
@@ -61,6 +61,15 @@ export default function PhoneMockup() {
                 {/* Purple accent */}
                 <div className="absolute inset-8"
                     style={{ opacity: hover ? 0.25 : 0.12, background: "radial-gradient(ellipse at 55% 60%, rgba(139,92,246,0.3) 0%, transparent 55%)", filter: "blur(55px)", transition: "opacity 0.6s" }} />
+                {/* NEW: Intense Backlight / Halo for 'Perfect' Pop */}
+                <div className="absolute inset-10"
+                    style={{
+                        opacity: hover ? 0.6 : 0.4,
+                        background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.1) 60deg, transparent 120deg, transparent 240deg, rgba(255,255,255,0.1) 300deg, transparent 360deg)",
+                        filter: "blur(40px)",
+                        transform: "rotate(20deg)",
+                        transition: "opacity 0.6s"
+                    }} />
             </div>
 
             {/* ══════ PHONE BODY ══════ */}
@@ -109,7 +118,7 @@ export default function PhoneMockup() {
 
                     {/* ── SCREEN ── */}
                     {/* ── SCREEN ── */}
-                    <div className="rounded-[44px] overflow-hidden bg-black relative" style={{ aspectRatio: "9/19" }}>
+                    <div className="rounded-[44px] overflow-hidden bg-black relative" style={{ aspectRatio: "9/18.5" }}>
 
                         {/* Subtle glass reflection — smooth, no sharp edges */}
                         <div className="absolute inset-0 z-40 pointer-events-none rounded-[44px]"
