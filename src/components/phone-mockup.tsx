@@ -191,53 +191,53 @@ export default function PhoneMockup() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="mt-auto pt-2 flex-shrink-0">
-                                <div className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-2xl bg-[#1A1A1F] text-white cursor-pointer hover:bg-black transition-colors">
-                                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-                                    <span className="text-[12px] font-semibold">View Discussion</span>
+                                <div className="pt-0.5 flex-shrink-0">
+                                    <div className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-2xl bg-[#1A1A1F] text-white cursor-pointer hover:bg-black transition-colors">
+                                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                                        <span className="text-[12px] font-semibold">View Discussion</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        {/* ── Edge light stripe — right side (subtle for dark bezel) ── */}
+                        <div className="absolute top-[5%] bottom-[5%] w-[2px] -right-[1px] rounded-r-full z-30"
+                            style={{
+                                opacity: tilt.y > 1 ? Math.min(tilt.y / 10, 0.6) : 0,
+                                background: "linear-gradient(180deg, transparent 5%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.3) 80%, transparent 95%)",
+                                filter: "blur(0.3px)",
+                                transition: "opacity 0.15s",
+                            }} />
+                        {/* ── Edge light stripe — left side ── */}
+                        <div className="absolute top-[5%] bottom-[5%] w-[2px] -left-[1px] rounded-l-full z-30"
+                            style={{
+                                opacity: tilt.y < -1 ? Math.min(Math.abs(tilt.y) / 10, 0.6) : 0,
+                                background: "linear-gradient(180deg, transparent 5%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.3) 80%, transparent 95%)",
+                                filter: "blur(0.3px)",
+                                transition: "opacity 0.15s",
+                            }} />
+                        {/* ── Edge light stripe — top ── */}
+                        <div className="absolute left-[6%] right-[6%] h-[2px] -top-[1px] rounded-t-full z-30"
+                            style={{
+                                opacity: tilt.x > 1 ? Math.min(tilt.x / 10, 0.4) : 0,
+                                background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.25) 30%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.25) 70%, transparent)",
+                                filter: "blur(0.3px)",
+                                transition: "opacity 0.15s",
+                            }} />
                     </div>
+
+                    {/* ── Shadow beneath ── */}
+                    <div className="absolute -bottom-6 inset-x-6 h-12 rounded-full z-0 pointer-events-none"
+                        style={{
+                            transform: `translateX(${sx}px)`,
+                            opacity: hover ? 0.7 : 0.4,
+                            background: "radial-gradient(ellipse, rgba(0,0,0,0.55) 0%, rgba(232,96,76,0.1) 50%, transparent 80%)",
+                            filter: `blur(${hover ? 20 : 15}px)`,
+                            transition: "all 0.5s",
+                        }} />
                 </div>
-
-                {/* ── Edge light stripe — right side (subtle for dark bezel) ── */}
-                <div className="absolute top-[5%] bottom-[5%] w-[2px] -right-[1px] rounded-r-full z-30"
-                    style={{
-                        opacity: tilt.y > 1 ? Math.min(tilt.y / 10, 0.6) : 0,
-                        background: "linear-gradient(180deg, transparent 5%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.3) 80%, transparent 95%)",
-                        filter: "blur(0.3px)",
-                        transition: "opacity 0.15s",
-                    }} />
-                {/* ── Edge light stripe — left side ── */}
-                <div className="absolute top-[5%] bottom-[5%] w-[2px] -left-[1px] rounded-l-full z-30"
-                    style={{
-                        opacity: tilt.y < -1 ? Math.min(Math.abs(tilt.y) / 10, 0.6) : 0,
-                        background: "linear-gradient(180deg, transparent 5%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.3) 80%, transparent 95%)",
-                        filter: "blur(0.3px)",
-                        transition: "opacity 0.15s",
-                    }} />
-                {/* ── Edge light stripe — top ── */}
-                <div className="absolute left-[6%] right-[6%] h-[2px] -top-[1px] rounded-t-full z-30"
-                    style={{
-                        opacity: tilt.x > 1 ? Math.min(tilt.x / 10, 0.4) : 0,
-                        background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.25) 30%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.25) 70%, transparent)",
-                        filter: "blur(0.3px)",
-                        transition: "opacity 0.15s",
-                    }} />
             </div>
-
-            {/* ── Shadow beneath ── */}
-            <div className="absolute -bottom-6 inset-x-6 h-12 rounded-full z-0 pointer-events-none"
-                style={{
-                    transform: `translateX(${sx}px)`,
-                    opacity: hover ? 0.7 : 0.4,
-                    background: "radial-gradient(ellipse, rgba(0,0,0,0.55) 0%, rgba(232,96,76,0.1) 50%, transparent 80%)",
-                    filter: `blur(${hover ? 20 : 15}px)`,
-                    transition: "all 0.5s",
-                }} />
         </div>
     );
 }
