@@ -53,23 +53,23 @@ export default function PhoneMockup() {
             className="relative w-full max-w-[300px] mx-auto cursor-default"
             style={{ perspective: "700px" }}
         >
-            {/* ── WARM BACKGROUND AURA — makes phone pop against dark bg ── */}
-            <div className="absolute -inset-40 pointer-events-none z-0">
-                {/* Main warm glow */}
-                <div className="absolute inset-0"
-                    style={{ opacity: hover ? 0.5 : 0.3, background: "radial-gradient(ellipse at 50% 50%, rgba(232,96,76,0.4) 0%, rgba(232,96,76,0.1) 40%, transparent 65%)", filter: "blur(60px)", transition: "opacity 0.6s" }} />
-                {/* Purple accent */}
-                <div className="absolute inset-8"
-                    style={{ opacity: hover ? 0.25 : 0.12, background: "radial-gradient(ellipse at 55% 60%, rgba(139,92,246,0.3) 0%, transparent 55%)", filter: "blur(55px)", transition: "opacity 0.6s" }} />
-                {/* NEW: Intense Backlight / Halo for 'Perfect' Pop */}
-                <div className="absolute inset-10"
+            {/* ── S-TIER AMBIENT GLOW BACKLIGHT ── */}
+            <div className="absolute -inset-[100px] z-0 pointer-events-none transform-gpu overflow-hidden opacity-100">
+                {/* 1. Core Warmth (Base) */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#E8604C]/40 via-[#FF8A6E]/20 to-transparent blur-[80px] opacity-100 transition-opacity duration-700"
+                    style={{ opacity: hover ? 0.8 : 0.5 }} />
+
+                {/* 2. Rotating Aurora (Dynamic Energy) */}
+                <div className="absolute -inset-[50%] animate-[spin_10s_linear_infinite] opacity-40 mix-blend-screen"
                     style={{
-                        opacity: hover ? 0.6 : 0.4,
-                        background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.1) 60deg, transparent 120deg, transparent 240deg, rgba(255,255,255,0.1) 300deg, transparent 360deg)",
-                        filter: "blur(40px)",
-                        transform: "rotate(20deg)",
-                        transition: "opacity 0.6s"
-                    }} />
+                        background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, #E8604C 40deg, transparent 100deg, #34D399 220deg, transparent 300deg, #E8604C 340deg)",
+                        filter: "blur(60px)",
+                    }}
+                />
+
+                {/* 3. Pulsing White Halo (Emphasis) */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[150%] bg-white/5 blur-[50px] rounded-full animate-pulse"
+                    style={{ animationDuration: "4s" }} />
             </div>
 
             {/* ══════ PHONE BODY ══════ */}
