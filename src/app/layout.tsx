@@ -31,10 +31,7 @@ export const metadata: Metadata = {
     "debate app",
     "iOS app",
   ],
-  icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
-  },
+
   other: {
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
