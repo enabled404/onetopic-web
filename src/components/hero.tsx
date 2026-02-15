@@ -50,7 +50,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.1, ease }}
-                    className="text-4xl sm:text-6xl md:text-7xl lg:text-[7rem] font-semibold tracking-tighter text-white leading-[0.95] mb-[min(2rem,3vh)] text-balance max-w-5xl"
+                    className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[7rem] font-semibold tracking-tighter text-white leading-[1.0] sm:leading-[0.95] mb-4 sm:mb-[min(2rem,3vh)] text-balance max-w-5xl"
                 >
                     One question.<br />
                     One conversation.<br />
@@ -65,7 +65,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2, ease }}
-                    className="text-base sm:text-xl md:text-2xl text-[#8A8A93] max-w-2xl mx-auto leading-relaxed text-balance mb-[min(2.5rem,4vh)]"
+                    className="text-[0.95rem] sm:text-xl md:text-2xl text-[#8A8A93] max-w-2xl mx-auto leading-relaxed text-balance mb-6 sm:mb-[min(2.5rem,4vh)]"
                 >
                     Every day, the world debates.<br />
                     No feed. No noise. Just <span className="text-white font-bold">one question that matters</span>.
@@ -76,7 +76,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.3, ease }}
-                    className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-16 sm:mb-20 md:mb-28"
+                    className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-10 sm:mb-20 md:mb-28"
                 >
                     {/* Download Button — Premium CSS glow */}
                     <a

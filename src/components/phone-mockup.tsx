@@ -108,7 +108,8 @@ export default function PhoneMockup() {
                         style={{ background: "linear-gradient(180deg, #2A2A30, #454550, #2A2A30)", boxShadow: "1px 0 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)" }} />
 
                     {/* ── SCREEN ── */}
-                    <div className="rounded-[44px] overflow-hidden bg-black relative" style={{ aspectRatio: "9/19" }}>
+                    {/* ── SCREEN ── */}
+                    <div className="rounded-[44px] overflow-hidden bg-black relative" style={{ aspectRatio: "9/20" }}>
 
                         {/* Subtle glass reflection — smooth, no sharp edges */}
                         <div className="absolute inset-0 z-40 pointer-events-none rounded-[44px]"
@@ -136,57 +137,56 @@ export default function PhoneMockup() {
                         </div>
 
                         {/* ─── App Content ─── */}
-                        <div className="h-full bg-[#F8F7F5] flex flex-col pt-12 relative">
-                            <div className="flex items-center justify-center py-2.5 px-4 bg-white border-b border-gray-100">
-                                <div className="text-black font-bold text-[14px] tracking-tight">OneTopic</div>
+                        <div className="h-full bg-[#F8F7F5] flex flex-col pt-11 pb-4 relative px-3">
+                            <div className="flex items-center justify-center py-2 bg-white border-b border-gray-100 -mx-3 mb-2">
+                                <div className="text-black font-bold text-[13px] tracking-tight">OneTopic</div>
                             </div>
-                            <div className="flex justify-center py-2">
-                                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200">
-                                    <div className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
-                                    <span className="text-[9px] font-semibold text-emerald-700 tracking-wide">Active · 13h 23m</span>
-                                </div>
-                            </div>
-                            <div className="mx-3 bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-                                <h3 className="text-black text-[1rem] font-bold leading-snug text-center mb-2 tracking-tight">Is social media a net positive for society?</h3>
-                                <div className="flex items-center justify-center gap-1.5 text-[10px] text-gray-400 font-medium">
-                                    <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                                    2,847,291 votes
-                                </div>
-                            </div>
-                            <div className="mx-3 mt-2">
-                                <div className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200">
-                                    <svg className="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                    <span className="text-[11px] font-semibold text-emerald-700">You voted for Side B</span>
-                                </div>
-                            </div>
-                            <div className="mx-3 mt-2 bg-white rounded-2xl p-3 shadow-sm border border-gray-100">
-                                <div className="text-[10px] font-bold text-gray-500 tracking-wide uppercase mb-2">Current Results</div>
-                                <div className="flex gap-2 mb-2">
-                                    <div className="flex-1 text-center">
-                                        <div className="text-[9px] font-semibold text-gray-400 mb-0.5">Side A</div>
-                                        <div className="text-[24px] font-bold text-[#E8604C] leading-none tracking-tight">44%</div>
-                                    </div>
-                                    <div className="w-px bg-gray-100 self-stretch" />
-                                    <div className="flex-1 text-center">
-                                        <div className="text-[9px] font-semibold text-gray-400 mb-0.5">Side B</div>
-                                        <div className="text-[24px] font-bold text-emerald-500 leading-none tracking-tight">56%</div>
+
+                            <div className="flex-1 flex flex-col gap-2 min-h-0">
+                                <div className="flex justify-center flex-shrink-0">
+                                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200">
+                                        <div className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
+                                        <span className="text-[9px] font-semibold text-emerald-700 tracking-wide">Active · 13h 23m</span>
                                     </div>
                                 </div>
-                                <div className="flex h-1.5 rounded-full overflow-hidden bg-gray-100">
-                                    <div className="bg-[#E8604C] rounded-l-full" style={{ width: "44%" }} />
-                                    <div className="bg-emerald-400 rounded-r-full" style={{ width: "56%" }} />
-                                </div>
-                                <div className="flex gap-1.5 mt-2">
-                                    <div className="flex-1 bg-[#FFF5F3] rounded-lg px-2 py-1.5 text-center">
-                                        <span className="text-[8.5px] font-medium text-[#E8604C] leading-tight">Yes, it connects us globally</span>
+
+                                <div className="bg-white rounded-2xl p-3.5 shadow-sm border border-gray-100 flex-shrink-0">
+                                    <h3 className="text-black text-[0.95rem] font-bold leading-snug text-center mb-1.5 tracking-tight">Is social media a net positive for society?</h3>
+                                    <div className="flex items-center justify-center gap-1.5 text-[10px] text-gray-400 font-medium">
+                                        <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                        2,847,291 votes
                                     </div>
-                                    <div className="flex-1 bg-emerald-50 rounded-lg px-2 py-1.5 text-center">
-                                        <span className="text-[8.5px] font-medium text-emerald-600 leading-tight">No, it divides and distracts</span>
+                                </div>
+
+                                <div className="flex-shrink-0">
+                                    <div className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200">
+                                        <svg className="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                        <span className="text-[11px] font-semibold text-emerald-700">You voted for Side B</span>
+                                    </div>
+                                </div>
+
+                                <div className="bg-white rounded-2xl p-3 shadow-sm border border-gray-100 flex-shrink-0">
+                                    <div className="text-[9px] font-bold text-gray-500 tracking-wide uppercase mb-2">Current Results</div>
+                                    <div className="flex gap-2 mb-2">
+                                        <div className="flex-1 text-center">
+                                            <div className="text-[8px] font-semibold text-gray-400 mb-0.5">Side A</div>
+                                            <div className="text-[20px] font-bold text-[#E8604C] leading-none tracking-tight">44%</div>
+                                        </div>
+                                        <div className="w-px bg-gray-100 self-stretch" />
+                                        <div className="flex-1 text-center">
+                                            <div className="text-[8px] font-semibold text-gray-400 mb-0.5">Side B</div>
+                                            <div className="text-[20px] font-bold text-emerald-500 leading-none tracking-tight">56%</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex h-1.5 rounded-full overflow-hidden bg-gray-100">
+                                        <div className="bg-[#E8604C] rounded-l-full" style={{ width: "44%" }} />
+                                        <div className="bg-emerald-400 rounded-r-full" style={{ width: "56%" }} />
                                     </div>
                                 </div>
                             </div>
-                            <div className="mx-3 mt-2 mb-3">
-                                <div className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-2xl bg-[#1A1A1F] text-white">
+
+                            <div className="mt-auto pt-2 flex-shrink-0">
+                                <div className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-2xl bg-[#1A1A1F] text-white cursor-pointer hover:bg-black transition-colors">
                                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                                     <span className="text-[12px] font-semibold">View Discussion</span>
                                 </div>
