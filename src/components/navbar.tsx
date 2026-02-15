@@ -46,9 +46,11 @@ export default function Navbar() {
 
                 {/* CTA + hamburger */}
                 <div className="flex items-center gap-3 shrink-0">
-                    <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex btn-liquid-wrap">
-                        <span className="btn-liquid-inner !py-[9px] !px-5 !text-[13px]">Download</span>
-                    </a>
+                    <div className="hidden md:block">
+                        <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="btn-liquid-wrap">
+                            <span className="btn-liquid-inner !py-[9px] !px-5 !text-[13px]">Download</span>
+                        </a>
+                    </div>
 
                     <button
                         onClick={() => setMobileOpen(!mobileOpen)}

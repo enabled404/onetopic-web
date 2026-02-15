@@ -9,7 +9,7 @@ const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-x-clip bg-[#030304] pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-6">
+        <section className="relative min-h-[100svh] h-auto flex flex-col items-center justify-center overflow-x-clip bg-[#030304] pt-24 sm:pt-28 pb-12 sm:pb-24 px-4 sm:px-6">
 
             {/* Ambient Background Glows — strong enough to be clearly visible */}
             <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1400px] h-[900px] opacity-[0.35] blur-[100px] pointer-events-none"
@@ -105,9 +105,10 @@ export default function Hero() {
 
                 {/* 5. Interactive 3D Phone Mockup */}
                 <motion.div
-                    initial={{ opacity: 0, y: 100, rotateX: 25 }}
+                    initial={{ opacity: 0, y: 40, rotateX: 25 }}
                     animate={{ opacity: 1, y: 0, rotateX: 0 }}
                     transition={{ duration: 1.2, delay: 0.4, ease }}
+                    className="scale-[0.85] sm:scale-100 origin-top"
                 >
                     <PhoneMockup />
                 </motion.div>
