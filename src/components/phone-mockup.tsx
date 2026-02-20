@@ -53,23 +53,56 @@ export default function PhoneMockup() {
             className="relative w-full max-w-[300px] mx-auto cursor-default"
             style={{ perspective: "700px" }}
         >
-            {/* ── WARM BACKGROUND AURA — makes phone pop against dark bg ── */}
-            <div className="absolute -inset-40 pointer-events-none z-0">
-                {/* Main warm glow */}
-                <div className="absolute inset-0"
-                    style={{ opacity: hover ? 0.5 : 0.3, background: "radial-gradient(ellipse at 50% 50%, rgba(232,96,76,0.4) 0%, rgba(232,96,76,0.1) 40%, transparent 65%)", filter: "blur(60px)", transition: "opacity 0.6s" }} />
-                {/* Purple accent */}
-                <div className="absolute inset-8"
-                    style={{ opacity: hover ? 0.25 : 0.12, background: "radial-gradient(ellipse at 55% 60%, rgba(139,92,246,0.3) 0%, transparent 55%)", filter: "blur(55px)", transition: "opacity 0.6s" }} />
-                {/* NEW: Intense Backlight / Halo for 'Perfect' Pop */}
-                <div className="absolute inset-10"
+            {/* ── S-TIER CINEMATIC BACKGROUND FIELD ── */}
+            <div className="absolute -inset-[140px] pointer-events-none z-0 flex items-center justify-center">
+
+                {/* 1. Core Reactor Glow */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#E8604C]/30 via-[#C878D0]/20 to-transparent blur-[80px] rounded-full transition-opacity duration-700"
+                    style={{ opacity: hover ? 0.7 : 0.4 }} />
+
+                {/* 2. Intense Backlight Halo / Spotlight */}
+                <div className="absolute w-[80%] h-[80%] bg-white/10 blur-[40px] rounded-full transition-opacity duration-700"
+                    style={{ opacity: hover ? 0.8 : 0.4 }} />
+
+                <div className="absolute w-[100%] h-[100%] transition-opacity duration-700"
                     style={{
-                        opacity: hover ? 0.6 : 0.4,
-                        background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.1) 60deg, transparent 120deg, transparent 240deg, rgba(255,255,255,0.1) 300deg, transparent 360deg)",
-                        filter: "blur(40px)",
-                        transform: "rotate(20deg)",
-                        transition: "opacity 0.6s"
+                        opacity: hover ? 0.5 : 0.3,
+                        background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.2) 60deg, transparent 120deg, transparent 240deg, rgba(255,255,255,0.2) 300deg, transparent 360deg)",
+                        filter: "blur(30px)",
+                        transform: "rotate(20deg)" // keeps the static halo user preferred
                     }} />
+
+                {/* 3. 3D Orbital Energy Rings */}
+                <div className="absolute inset-0 flex items-center justify-center [perspective:1000px] mix-blend-screen transition-opacity duration-1000"
+                    style={{ opacity: hover ? 1 : 0.6 }}>
+
+                    {/* Outer Slanted Orbit */}
+                    <div className="absolute w-[110%] h-[110%] opacity-40 mix-blend-plus-lighter" style={{ transform: "rotateX(70deg) rotateY(25deg)", transformStyle: "preserve-3d" }}>
+                        <div className="w-full h-full rounded-full border-[1.5px] border-white/5 border-t-white/50 border-b-white/50 animate-[spin_10s_linear_infinite]" />
+                    </div>
+
+                    {/* Inner Counter Orbit (Brand Color) */}
+                    <div className="absolute w-[130%] h-[130%] opacity-50 mix-blend-lighten" style={{ transform: "rotateX(30deg) rotateY(-40deg)", transformStyle: "preserve-3d" }}>
+                        <div className="w-full h-full rounded-full border border-[#E8604C]/10 border-l-[#E8604C]/80 border-r-[#E8604C]/80 animate-[spin_15s_linear_infinite_reverse]" />
+                    </div>
+
+                    {/* Vertical Accelerator Ring */}
+                    <div className="absolute w-[85%] h-[85%] opacity-60 mix-blend-plus-lighter" style={{ transform: "rotateX(15deg) rotateY(75deg)", transformStyle: "preserve-3d" }}>
+                        <div className="w-full h-full rounded-full border-[2px] border-[#C878D0]/10 border-t-[#C878D0]/70 animate-[spin_8s_linear_infinite]" />
+                    </div>
+                </div>
+
+                {/* 4. Drifting Quantum Sparks (Parallax) */}
+                <div className="absolute inset-0 z-10"
+                    style={{
+                        transform: `translate(${tilt.y * -0.5}px, ${tilt.x * -0.5}px)`,
+                        transition: hover ? "transform 0.1s ease-out" : "transform 0.6s cubic-bezier(0.33,1,0.68,1)"
+                    }}>
+                    <div className="absolute top-[15%] left-[15%] w-1.5 h-1.5 bg-white rounded-full blur-[0.5px] shadow-[0_0_8px_white] animate-[pulse_3s_ease-in-out_infinite]" />
+                    <div className="absolute top-[85%] left-[80%] w-2 h-2 bg-[#E8604C] rounded-full blur-[1px] shadow-[0_0_12px_#E8604C] animate-[pulse_4s_ease-in-out_infinite_reverse]" />
+                    <div className="absolute top-[75%] left-[10%] w-1.5 h-1.5 bg-[#C878D0] rounded-full blur-[0.5px] shadow-[0_0_10px_#C878D0] animate-[ping_5s_ease-in-out_infinite]" />
+                    <div className="absolute top-[20%] left-[85%] w-1 h-1 bg-white rounded-full shadow-[0_0_5px_white] animate-[ping_6s_ease-in-out_infinite_reverse]" />
+                </div>
             </div>
 
             {/* ══════ PHONE BODY ══════ */}
