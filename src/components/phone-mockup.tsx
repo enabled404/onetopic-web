@@ -53,46 +53,46 @@ export default function PhoneMockup() {
             className="relative w-full max-w-[300px] mx-auto cursor-default"
             style={{ perspective: "700px" }}
         >
-            {/* ── S-TIER MASSIVE LIVING AURA BACKGROUND ── */}
-            <div className="absolute -inset-[280px] pointer-events-none z-0 flex items-center justify-center transition-opacity duration-1000"
+            {/* ── S-TIER MASSIVE LIVING AURA BACKGROUND (BRAND ALIGNED) ── */}
+            <div className="absolute -inset-[320px] pointer-events-none z-0 flex items-center justify-center transition-opacity duration-1000"
                 style={{
-                    opacity: hover ? 1 : 0.6,
+                    opacity: hover ? 1 : 0.65,
                     WebkitMaskImage: "radial-gradient(circle at center, black 35%, transparent 65%)",
                     maskImage: "radial-gradient(circle at center, black 35%, transparent 65%)"
                 }}>
 
-                {/* 1. Fluid Nebula (Massive, slow moving vibrant color plasma) */}
+                {/* 1. Fluid Nebula (Massive, slow moving vibrant brand-color plasma) */}
                 <div className="absolute inset-0 flex items-center justify-center mix-blend-screen transition-transform duration-1000"
                     style={{ transform: `scale(${hover ? 1.1 : 0.9})` }}>
                     <div className="absolute w-[50%] h-[50%] bg-[#E8604C] blur-[90px] rounded-[40%_60%_70%_30%] animate-[spin_12s_linear_infinite]" />
-                    <div className="absolute w-[45%] h-[55%] bg-[#C878D0] blur-[90px] rounded-[60%_40%_30%_70%] animate-[spin_18s_linear_infinite_reverse]" />
-                    <div className="absolute w-[60%] h-[45%] bg-[#38BDF8] blur-[90px] rounded-[50%_50%_60%_40%] animate-[spin_24s_linear_infinite]" />
+                    <div className="absolute w-[45%] h-[55%] bg-[#FF8C70] blur-[90px] rounded-[60%_40%_30%_70%] animate-[spin_18s_linear_infinite_reverse]" />
+                    <div className="absolute w-[60%] h-[45%] bg-[#FF4500] blur-[100px] rounded-[50%_50%_60%_40%] animate-[spin_24s_linear_infinite]" />
                 </div>
 
                 {/* 2. Structured 'God Rays' (High-tech geometric light beams) */}
                 <div className="absolute inset-0 mix-blend-overlay opacity-50 animate-[spin_60s_linear_infinite]"
                     style={{
-                        background: "repeating-conic-gradient(from 0deg, transparent 0deg, transparent 4deg, rgba(255,255,255,0.2) 5deg, transparent 6deg)"
+                        background: "repeating-conic-gradient(from 0deg, transparent 0deg, transparent 4deg, rgba(232,96,76,0.2) 5deg, transparent 6deg)"
                     }} />
 
                 {/* 3. Sharp Optical Flare Halo (Recreates the premium rim light) */}
-                <div className="absolute w-[55%] h-[55%] rounded-full border border-white/10 shadow-[0_0_100px_rgba(255,255,255,0.3)_inset] animate-[spin_10s_linear_infinite]"
+                <div className="absolute w-[55%] h-[55%] rounded-full border border-[#E8604C]/20 shadow-[0_0_100px_rgba(232,96,76,0.3)_inset] animate-[spin_10s_linear_infinite]"
                     style={{
-                        background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.6) 15deg, transparent 40deg, transparent 180deg, rgba(255,255,255,0.6) 195deg, transparent 220deg)"
+                        background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(232,96,76,0.6) 15deg, transparent 40deg, transparent 180deg, rgba(232,96,76,0.6) 195deg, transparent 220deg)"
                     }} />
 
                 {/* 4. Interactive Stellar Dust (Deep Cursor Parallax) */}
                 <div className="absolute inset-0"
                     style={{
-                        transform: `translate(${tilt.y * -3}px, ${tilt.x * -3}px) scale(1.15)`,
+                        transform: `translate(${tilt.y * -4}px, ${tilt.x * -4}px) scale(1.15)`,
                         transition: hover ? "transform 0.1s ease-out" : "transform 0.6s cubic-bezier(0.33,1,0.68,1)"
                     }}>
                     <div className="absolute inset-0 opacity-40 mix-blend-screen animate-[pulse_3s_ease-in-out_infinite]"
-                        style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.9) 1.5px, transparent 1.5px)", backgroundSize: "50px 50px", backgroundPosition: "0 0" }} />
+                        style={{ backgroundImage: "radial-gradient(circle, rgba(255,140,112,0.9) 1.5px, transparent 1.5px)", backgroundSize: "50px 50px", backgroundPosition: "0 0" }} />
                     <div className="absolute inset-0 opacity-20 mix-blend-screen animate-[pulse_5s_ease-in-out_infinite_reverse]"
-                        style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.7) 2px, transparent 2px)", backgroundSize: "80px 80px", backgroundPosition: "30px 30px" }} />
+                        style={{ backgroundImage: "radial-gradient(circle, rgba(232,96,76,0.7) 2px, transparent 2px)", backgroundSize: "80px 80px", backgroundPosition: "30px 30px" }} />
                     <div className="absolute inset-0 opacity-30 mix-blend-screen"
-                        style={{ backgroundImage: "radial-gradient(circle, rgba(232,96,76,0.8) 1.5px, transparent 1.5px)", backgroundSize: "110px 110px", backgroundPosition: "15px 50px" }} />
+                        style={{ backgroundImage: "radial-gradient(circle, rgba(255,69,0,0.8) 1.5px, transparent 1.5px)", backgroundSize: "110px 110px", backgroundPosition: "15px 50px" }} />
                 </div>
             </div>
 
@@ -105,6 +105,45 @@ export default function PhoneMockup() {
                     transition: hover ? "transform 0.08s ease-out" : "transform 0.6s cubic-bezier(0.33,1,0.68,1)",
                 }}
             >
+                {/* ── 3D FLOATING APPS — popping out of the screen ── */}
+                <div className="absolute inset-0 pointer-events-none z-50 overflow-visible" style={{ transformStyle: "preserve-3d" }}>
+                    {/* Floating Icon 1 (Top Left) - Extreme Depth */}
+                    <div
+                        className="absolute -left-12 top-10 rounded-[14px] p-2 bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_20px_40px_rgba(232,96,76,0.4)]"
+                        style={{
+                            transform: `translateZ(80px) translate(${tilt.y * 3}px, ${tilt.x * 3}px) rotate(-12deg)`,
+                            transition: hover ? "transform 0.1s ease-out" : "transform 0.6s cubic-bezier(0.33,1,0.68,1)"
+                        }}
+                    >
+                        <div className="absolute inset-0 rounded-[14px] bg-gradient-to-tr from-white/30 to-transparent mix-blend-overlay pointer-events-none" />
+                        <img src="/logo.png" alt="App Icon" className="w-12 h-12 rounded-[10px] shadow-inner" />
+                    </div>
+
+                    {/* Floating Icon 2 (Right Middle) - Medium Depth */}
+                    <div
+                        className="absolute -right-8 top-1/2 -translate-y-1/2 rounded-2xl p-2.5 bg-black/40 backdrop-blur-xl border border-white/10 shadow-[0_30px_50px_rgba(0,0,0,0.5),_0_0_30px_rgba(232,96,76,0.3)]"
+                        style={{
+                            transform: `translateZ(120px) translate(${tilt.y * 5}px, ${tilt.x * 5}px) rotate(8deg)`,
+                            transition: hover ? "transform 0.1s ease-out" : "transform 0.6s cubic-bezier(0.33,1,0.68,1)"
+                        }}
+                    >
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent mix-blend-overlay pointer-events-none" />
+                        <img src="/logo.png" alt="App Icon" className="w-16 h-16 rounded-xl shadow-inner" />
+                    </div>
+
+                    {/* Floating Icon 3 (Bottom Left) - Highest Depth (Closest) */}
+                    <div
+                        className="absolute -left-6 bottom-16 rounded-[18px] p-3 bg-white/5 backdrop-blur-lg border border-white/30 shadow-[0_40px_80px_rgba(232,96,76,0.4)]"
+                        style={{
+                            transform: `translateZ(180px) translate(${tilt.y * 8}px, ${tilt.x * 8}px) rotate(-5deg) scale(1.1)`,
+                            transition: hover ? "transform 0.1s ease-out" : "transform 0.6s cubic-bezier(0.33,1,0.68,1)"
+                        }}
+                    >
+                        <div className="absolute inset-0 rounded-[18px] bg-gradient-to-t from-white/40 to-transparent mix-blend-overlay pointer-events-none" />
+                        <img src="/logo.png" alt="App Icon" className="w-16 h-16 rounded-2xl shadow-inner" />
+                    </div>
+                </div>
+
                 {/* ── DARK REFLECTIVE BEZEL — Space Black titanium, NO box-shadow ── */}
                 <div
                     className="rounded-[52px] p-[8px] relative"
@@ -140,7 +179,6 @@ export default function PhoneMockup() {
                     <div className="absolute -right-[3px] top-[28%] w-[4px] h-[8.5%] rounded-r-[3px] z-30"
                         style={{ background: "linear-gradient(180deg, #2A2A30, #454550, #2A2A30)", boxShadow: "1px 0 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)" }} />
 
-                    {/* ── SCREEN ── */}
                     {/* ── SCREEN ── */}
                     <div className="rounded-[44px] overflow-hidden bg-black relative" style={{ aspectRatio: "9/18.5" }}>
 
