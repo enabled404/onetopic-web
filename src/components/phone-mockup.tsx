@@ -1,146 +1,112 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import Image from "next/image";
+import { useRef, useState, useCallback, useEffect } from "react";
+import Image from "next/image"; // Keep Image import as it's used in the app content
 
 /* ────────────────────────────────────────────
-   PHONE MOCKUP — FRAMER MOTION POWERED
-   • Buttery smooth, mass/stiffness driven 3D springs
-   • Deep, elegant, Apple-grade dark ambient background
-   • Authentic volumetric 3D floating app icons 
+   PHONE MOCKUP — S-TIER SOPHISTICATED
+   • Restored raw, zero-latency cursor tracking for snappy tilt
+   • Removed all noisy backgrounds and flat floating icons
+   • Introduced a highly polished, Apple-grade Aurora Mesh 
+     (Coral & Emerald) with premium cinematic noise grain
    ──────────────────────────────────────────── */
 
 export default function PhoneMockup() {
     const ref = useRef<HTMLDivElement>(null);
+    const [tilt, setTilt] = useState({ x: 0, y: 0 }); // Snappy raw tracking
+    const [spot, setSpot] = useState({ x: 50, y: 50 });
+    const [hover, setHover] = useState(false);
+    const raf = useRef(0);
 
-    // Track relative mouse position (-0.5 to 0.5)
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-
-    // Ultra-smooth, premium spring physics
-    const springConfig = { stiffness: 120, damping: 25, mass: 1.2 };
-    const smoothX = useSpring(mouseX, springConfig);
-    const smoothY = useSpring(mouseY, springConfig);
-
-    // Map to rotations (Opposite direction for natural 3D tilt)
-    // When mouse moves right (positive X), phone should rotate around Y axis (look right)
-    const rotateY = useTransform(smoothX, [-0.5, 0.5], [-22, 22]);
-    const rotateX = useTransform(smoothY, [-0.5, 0.5], [20, -20]);
-
-    // Independent Parallax limits for the floating 3D icons
-    const float1X = useTransform(smoothX, [-0.5, 0.5], [-60, 60]);
-    const float1Y = useTransform(smoothY, [-0.5, 0.5], [-60, 60]);
-
-    const float2X = useTransform(smoothX, [-0.5, 0.5], [-35, 35]);
-    const float2Y = useTransform(smoothY, [-0.5, 0.5], [-35, 35]);
-
-    const float3X = useTransform(smoothX, [-0.5, 0.5], [-80, 80]);
-    const float3Y = useTransform(smoothY, [-0.5, 0.5], [-80, 80]);
-
-    // Spotlight gradient position inside the screen glass
-    const spotlightX = useTransform(smoothX, [-0.5, 0.5], [80, 20]);
-    const spotlightY = useTransform(smoothY, [-0.5, 0.5], [80, 20]);
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const onMove = useCallback((e: React.MouseEvent) => {
         if (!ref.current) return;
-        const rect = ref.current.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        mouseX.set(x);
-        mouseY.set(y);
-    };
+        cancelAnimationFrame(raf.current);
+        raf.current = requestAnimationFrame(() => {
+            const r = ref.current!.getBoundingClientRect();
+            // Relative cursor pos 0 to 1
+            const nx = (e.clientX - r.left) / r.width;
+            const ny = (e.clientY - r.top) / r.height;
+            // Snappy raw tilt mapping
+            setTilt({ x: (ny - 0.5) * -25, y: (nx - 0.5) * 25 });
+            setSpot({ x: nx * 100, y: ny * 100 });
+        });
+    }, []);
 
-    const handleMouseLeave = () => {
-        // Return to neutral elegant rest state gracefully
-        mouseX.set(0);
-        mouseY.set(0);
-    };
+    const onEnter = useCallback(() => setHover(true), []);
+    const onLeave = useCallback(() => {
+        setHover(false);
+        setTilt({ x: 0, y: 0 });
+        setSpot({ x: 50, y: 50 });
+    }, []);
+
+    useEffect(() => () => cancelAnimationFrame(raf.current), []);
+
+    // Derived values
+    const bezelAngle = 135 + tilt.y * 2.5;
+    const sx = -tilt.y * 1.2;
 
     return (
         <div
             ref={ref}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className="relative w-full max-w-[300px] mx-auto cursor-default py-12"
-            style={{ perspective: "1200px" }}
+            onMouseMove={onMove}
+            onMouseEnter={onEnter}
+            onMouseLeave={onLeave}
+            className="relative w-full max-w-[300px] mx-auto cursor-default py-[60px]"
+            style={{ perspective: "1000px" }}
         >
-            {/* ── S-TIER ELEGANT AMBIENT BACKGROUND ── 
-                Replacing the loud plasma/rays with an ultra-premium, 
-                deep cinematic dark bloom (billion-dollar minimalist tech identity). 
+            {/* ── S-TIER SOPHISTICATED MESH AURA ── 
+                A pristine, minimal, grain-textured dual-color mesh gradient.
+                Coral (#E8604C) meets Emerald (#10b981) — pure app palette.
             */}
-            <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center">
-                {/* Core Deep Glow */}
-                <div className="absolute w-[180%] h-[180%] bg-[#E8604C]/10 blur-[120px] rounded-full mix-blend-screen opacity-80" />
-                {/* Secondary Warm Core */}
-                <div className="absolute w-[100%] h-[100%] bg-gradient-to-tr from-[#38BDF8]/5 via-white/5 to-[#E8604C]/10 blur-[80px] rounded-full mix-blend-screen opacity-60" />
-                {/* Extremely subtle, slow drifting volumetric particles (No harsh dust) */}
-                <motion.div
-                    className="absolute inset-0 opacity-20"
-                    style={{ x: useTransform(smoothX, [-0.5, 0.5], [-10, 10]), y: useTransform(smoothY, [-0.5, 0.5], [-10, 10]) }}
-                >
-                    <div className="absolute top-[20%] left-[20%] w-32 h-32 bg-white/5 blur-[30px] rounded-full animate-[pulse_6s_ease-in-out_infinite]" />
-                    <div className="absolute bottom-[20%] right-[15%] w-48 h-48 bg-[#E8604C]/10 blur-[40px] rounded-full animate-[pulse_8s_ease-in-out_infinite_reverse]" />
-                </motion.div>
-            </div>
-
-            {/* ══════ MASTER 3D ROTATION RIG ══════ */}
-            <motion.div
-                className="relative z-20"
+            <div className="absolute inset-x-[-150px] inset-y-[-100px] pointer-events-none z-0 flex items-center justify-center transition-all duration-700 ease-out"
                 style={{
-                    rotateX,
-                    rotateY,
-                    transformStyle: "preserve-3d",
-                }}
-            >
-                {/* ── 3D VOLUMETRIC FLOATING APPS ── */}
-                <div className="absolute inset-0 pointer-events-none z-50 overflow-visible" style={{ transformStyle: "preserve-3d" }}>
+                    opacity: hover ? 1 : 0.45,
+                    transform: `scale(${hover ? 1.05 : 0.95})`,
+                }}>
 
-                    {/* Icon 1: Deep Back Left (Orbiting behind phone) */}
-                    <motion.div
-                        className="absolute -left-16 top-12"
-                        style={{ x: float1X, y: float1Y, z: -80, rotateZ: -15, rotateX: 10, rotateY: 20, transformStyle: "preserve-3d" }}
-                    >
-                        <div className="relative w-14 h-14 rounded-2xl bg-black/60 shadow-[0_10px_30px_rgba(0,0,0,0.8)] border border-white/5 ring-1 ring-black/50 overflow-hidden backdrop-blur-3xl p-1" style={{ transform: "translateZ(10px)" }}>
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
-                            <Image src="/logo.png" alt="App Icon" width={64} height={64} quality={100} className="w-full h-full rounded-xl object-contain opacity-80 mix-blend-screen" />
-                        </div>
-                    </motion.div>
-
-                    {/* Icon 2: Front Right (Popping out towards user) */}
-                    <motion.div
-                        className="absolute -right-14 top-1/3"
-                        style={{ x: float3X, y: float3Y, z: 120, rotateZ: 8, rotateX: -5, rotateY: -15, transformStyle: "preserve-3d" }}
-                    >
-                        {/* Volumetric Layering to simulate actual 3D thickness */}
-                        <div className="relative w-20 h-20 rounded-[20px] bg-gradient-to-tr from-white/10 to-white/5 backdrop-blur-xl shadow-[0_30px_60px_rgba(0,0,0,0.6),_0_0_40px_rgba(232,96,76,0.15)] border border-white/20 p-[6px]" style={{ transform: "translateZ(20px)" }}>
-                            {/* Inner Glass Core */}
-                            <div className="w-full h-full bg-black/40 rounded-[14px] flex items-center justify-center p-2 shadow-inner border border-white/10 relative overflow-hidden">
-                                <motion.div className="absolute inset-0 bg-gradient-to-tl from-white/20 to-transparent mix-blend-overlay" />
-                                <Image src="/logo.png" alt="App Icon" width={100} height={100} quality={100} className="w-full h-full rounded-[10px] object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]" />
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Icon 3: High Front Left (Very close, highly parallaxed) */}
-                    <motion.div
-                        className="absolute -left-10 bottom-8"
-                        style={{ x: float2X, y: float2Y, z: 160, rotateZ: -6, rotateX: 10, rotateY: 5, transformStyle: "preserve-3d" }}
-                    >
-                        <div className="relative w-16 h-16 rounded-[18px] bg-gradient-to-br from-[#E8604C]/10 to-transparent backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5),_0_0_20px_rgba(232,96,76,0.2)] border border-[#E8604C]/30 p-1.5" style={{ transform: "translateZ(10px)" }}>
-                            <div className="w-full h-full bg-[#1A1A1E] rounded-xl flex items-center justify-center p-1.5 shadow-inner border border-white/5 overflow-hidden relative">
-                                <motion.div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent mix-blend-overlay" />
-                                <Image src="/logo.png" alt="App Icon" width={80} height={80} quality={100} className="w-full h-full rounded-lg object-contain drop-shadow-[0_5px_10px_rgba(0,0,0,0.8)]" />
-                            </div>
-                        </div>
-                    </motion.div>
+                {/* The deep, smooth bloom structure */}
+                <div className="absolute inset-0 rounded-full overflow-hidden blur-[70px] mix-blend-screen opacity-90" style={{ transform: "translateZ(-100px)" }}>
+                    {/* Emerald Base */}
+                    <div className="absolute top-[10%] left-[20%] w-[50%] h-[50%] bg-[#10b981]/40 rounded-full mix-blend-screen animate-[spin_20s_linear_infinite]" />
+                    {/* Coral Base */}
+                    <div className="absolute bottom-[20%] right-[10%] w-[60%] h-[60%] bg-[#E8604C]/50 rounded-full mix-blend-screen animate-[spin_25s_linear_infinite_reverse]" />
+                    {/* Deep Gold Accent */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] bg-[#FBBF24]/30 rounded-full mix-blend-screen animate-[pulse_8s_ease-in-out_infinite]" />
                 </div>
 
+                {/* Premium details: An impossibly fine, perfectly crisp ambient orbit ring */}
+                <div className="absolute w-[80%] pt-[80%] rounded-full border border-white/[0.04] shadow-[0_0_60px_rgba(255,255,255,0.02)_inset]"
+                    style={{
+                        transform: `translateZ(-50px) rotateX(${tilt.x * 0.4}deg) rotateY(${tilt.y * 0.4}deg)`,
+                        transition: "transform 0.1s ease-out"
+                    }}>
+                    {/* Sub-surface illuminated arcs */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-[1px] bg-gradient-to-r from-transparent via-[#E8604C]/60 to-transparent blur-[1px]" />
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40%] h-[1px] bg-gradient-to-r from-transparent via-[#10b981]/60 to-transparent blur-[1px]" />
+                </div>
+
+                {/* High-end cinematic noise grain overlay */}
+                <div className="absolute inset-0 opacity-[0.25] mix-blend-overlay pointer-events-none rounded-full z-10 mask-radial"
+                    style={{
+                        backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                        WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 80%)"
+                    }} />
+            </div>
+
+            {/* ══════ PHONE BODY ══════ */}
+            <div
+                className="relative z-20"
+                style={{
+                    transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+                    transformStyle: "preserve-3d",
+                    transition: hover ? "transform 0.1s ease-out" : "transform 0.6s cubic-bezier(0.33,1,0.68,1)",
+                }}
+            >
                 {/* ── DARK REFLECTIVE BEZEL — Space Black titanium ── */}
                 <div
                     className="rounded-[52px] p-[8px] relative"
                     style={{
-                        background: `linear-gradient(135deg,
+                        background: `linear-gradient(${bezelAngle}deg,
                             #1A1A1F 0%,
                             #2A2A30 6%,
                             #3A3A42 14%,
@@ -158,29 +124,25 @@ export default function PhoneMockup() {
                     }}
                 >
                     {/* ── Side Buttons ── */}
-                    {/* Mute */}
                     <div className="absolute -left-[3px] top-[19%] w-[4px] h-[3.5%] rounded-l-[3px] z-30"
                         style={{ background: "linear-gradient(180deg, #2A2A30, #454550, #2A2A30)", boxShadow: "-1px 0 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)" }} />
-                    {/* Vol Up */}
                     <div className="absolute -left-[3px] top-[26%] w-[4px] h-[6.5%] rounded-l-[3px] z-30"
                         style={{ background: "linear-gradient(180deg, #2A2A30, #454550, #2A2A30)", boxShadow: "-1px 0 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)" }} />
-                    {/* Vol Down */}
                     <div className="absolute -left-[3px] top-[35%] w-[4px] h-[6.5%] rounded-l-[3px] z-30"
                         style={{ background: "linear-gradient(180deg, #2A2A30, #454550, #2A2A30)", boxShadow: "-1px 0 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)" }} />
-                    {/* Power */}
                     <div className="absolute -right-[3px] top-[28%] w-[4px] h-[8.5%] rounded-r-[3px] z-30"
                         style={{ background: "linear-gradient(180deg, #2A2A30, #454550, #2A2A30)", boxShadow: "1px 0 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)" }} />
 
                     {/* ── SCREEN ── */}
                     <div className="rounded-[44px] overflow-hidden bg-black relative" style={{ aspectRatio: "9/18.5" }}>
 
-                        {/* Smooth 3D Glass Reflection Spotlight driven by Framer Motion */}
-                        <motion.div
+                        {/* Smooth Glass Reflection Spotlight */}
+                        <div
                             className="absolute inset-0 z-40 pointer-events-none rounded-[44px]"
                             style={{
-                                background: useTransform(
-                                    () => `radial-gradient(400px circle at ${spotlightX.get()}% ${spotlightY.get()}%, rgba(255,255,255,0.08), transparent 60%)`
-                                )
+                                opacity: hover ? 0.7 : 0.3,
+                                background: `radial-gradient(350px circle at ${spot.x}% ${spot.y}%, rgba(255,255,255,0.08), transparent 60%)`,
+                                transition: "opacity 0.4s",
                             }}
                         />
 
@@ -266,25 +228,42 @@ export default function PhoneMockup() {
                             </div>
                         </div>
 
-                        {/* Edge light stripes - Driven by Framer Motion springs */}
-                        <motion.div className="absolute top-[5%] bottom-[5%] w-[2px] -right-[1px] rounded-r-full z-30"
-                            style={{ opacity: useTransform(smoothX, [0.1, 0.5], [0, 0.6]), background: "linear-gradient(180deg, transparent 5%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.3) 80%, transparent 95%)", filter: "blur(0.3px)" }} />
-                        <motion.div className="absolute top-[5%] bottom-[5%] w-[2px] -left-[1px] rounded-l-full z-30"
-                            style={{ opacity: useTransform(smoothX, [-0.1, -0.5], [0, 0.6]), background: "linear-gradient(180deg, transparent 5%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.3) 80%, transparent 95%)", filter: "blur(0.3px)" }} />
-                        <motion.div className="absolute left-[6%] right-[6%] h-[2px] -top-[1px] rounded-t-full z-30"
-                            style={{ opacity: useTransform(smoothY, [0.1, 0.5], [0, 0.4]), background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.25) 30%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.25) 70%, transparent)", filter: "blur(0.3px)" }} />
+                        {/* Edge light stripe — right side (subtle for dark bezel) */}
+                        <div className="absolute top-[5%] bottom-[5%] w-[2px] -right-[1px] rounded-r-full z-30"
+                            style={{
+                                opacity: tilt.y > 1 ? Math.min(tilt.y / 10, 0.6) : 0,
+                                background: "linear-gradient(180deg, transparent 5%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.3) 80%, transparent 95%)",
+                                filter: "blur(0.3px)",
+                                transition: "opacity 0.15s",
+                            }} />
+                        {/* Edge light stripe — left side */}
+                        <div className="absolute top-[5%] bottom-[5%] w-[2px] -left-[1px] rounded-l-full z-30"
+                            style={{
+                                opacity: tilt.y < -1 ? Math.min(Math.abs(tilt.y) / 10, 0.6) : 0,
+                                background: "linear-gradient(180deg, transparent 5%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.3) 80%, transparent 95%)",
+                                filter: "blur(0.3px)",
+                                transition: "opacity 0.15s",
+                            }} />
+                        {/* Edge light stripe — top */}
+                        <div className="absolute left-[6%] right-[6%] h-[2px] -top-[1px] rounded-t-full z-30"
+                            style={{
+                                opacity: tilt.x > 1 ? Math.min(tilt.x / 10, 0.4) : 0,
+                                background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.25) 30%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.25) 70%, transparent)",
+                                filter: "blur(0.3px)",
+                                transition: "opacity 0.15s",
+                            }} />
                     </div>
 
                     {/* Floor Reflection shadow tracking physics */}
-                    <motion.div className="absolute -bottom-8 inset-x-8 h-10 rounded-full z-0 pointer-events-none"
+                    <div className="absolute -bottom-8 inset-x-8 h-10 rounded-full z-0 pointer-events-none transition-all duration-300"
                         style={{
-                            x: useTransform(smoothX, [-0.5, 0.5], [40, -40]),
-                            opacity: 0.6,
-                            background: "radial-gradient(ellipse, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 80%)",
-                            filter: "blur(15px)"
+                            transform: `translateX(${sx}px)`,
+                            opacity: hover ? 0.7 : 0.4,
+                            background: "radial-gradient(ellipse, rgba(0,0,0,0.6) 0%, rgba(232,96,76,0.05) 50%, transparent 80%)",
+                            filter: `blur(${hover ? 20 : 15}px)`
                         }} />
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
 }
