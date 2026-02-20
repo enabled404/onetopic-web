@@ -53,55 +53,46 @@ export default function PhoneMockup() {
             className="relative w-full max-w-[300px] mx-auto cursor-default"
             style={{ perspective: "700px" }}
         >
-            {/* ── S-TIER CINEMATIC BACKGROUND FIELD ── */}
-            <div className="absolute -inset-[140px] pointer-events-none z-0 flex items-center justify-center">
+            {/* ── S-TIER MASSIVE LIVING AURA BACKGROUND ── */}
+            <div className="absolute -inset-[280px] pointer-events-none z-0 flex items-center justify-center transition-opacity duration-1000"
+                style={{
+                    opacity: hover ? 1 : 0.6,
+                    WebkitMaskImage: "radial-gradient(circle at center, black 35%, transparent 65%)",
+                    maskImage: "radial-gradient(circle at center, black 35%, transparent 65%)"
+                }}>
 
-                {/* 1. Core Reactor Glow */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#E8604C]/30 via-[#C878D0]/20 to-transparent blur-[80px] rounded-full transition-opacity duration-700"
-                    style={{ opacity: hover ? 0.7 : 0.4 }} />
-
-                {/* 2. Intense Backlight Halo / Spotlight */}
-                <div className="absolute w-[80%] h-[80%] bg-white/10 blur-[40px] rounded-full transition-opacity duration-700"
-                    style={{ opacity: hover ? 0.8 : 0.4 }} />
-
-                <div className="absolute w-[100%] h-[100%] transition-opacity duration-700"
-                    style={{
-                        opacity: hover ? 0.5 : 0.3,
-                        background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.2) 60deg, transparent 120deg, transparent 240deg, rgba(255,255,255,0.2) 300deg, transparent 360deg)",
-                        filter: "blur(30px)",
-                        transform: "rotate(20deg)" // keeps the static halo user preferred
-                    }} />
-
-                {/* 3. 3D Orbital Energy Rings */}
-                <div className="absolute inset-0 flex items-center justify-center [perspective:1000px] mix-blend-screen transition-opacity duration-1000"
-                    style={{ opacity: hover ? 1 : 0.6 }}>
-
-                    {/* Outer Slanted Orbit */}
-                    <div className="absolute w-[110%] h-[110%] opacity-40 mix-blend-plus-lighter" style={{ transform: "rotateX(70deg) rotateY(25deg)", transformStyle: "preserve-3d" }}>
-                        <div className="w-full h-full rounded-full border-[1.5px] border-white/5 border-t-white/50 border-b-white/50 animate-[spin_10s_linear_infinite]" />
-                    </div>
-
-                    {/* Inner Counter Orbit (Brand Color) */}
-                    <div className="absolute w-[130%] h-[130%] opacity-50 mix-blend-lighten" style={{ transform: "rotateX(30deg) rotateY(-40deg)", transformStyle: "preserve-3d" }}>
-                        <div className="w-full h-full rounded-full border border-[#E8604C]/10 border-l-[#E8604C]/80 border-r-[#E8604C]/80 animate-[spin_15s_linear_infinite_reverse]" />
-                    </div>
-
-                    {/* Vertical Accelerator Ring */}
-                    <div className="absolute w-[85%] h-[85%] opacity-60 mix-blend-plus-lighter" style={{ transform: "rotateX(15deg) rotateY(75deg)", transformStyle: "preserve-3d" }}>
-                        <div className="w-full h-full rounded-full border-[2px] border-[#C878D0]/10 border-t-[#C878D0]/70 animate-[spin_8s_linear_infinite]" />
-                    </div>
+                {/* 1. Fluid Nebula (Massive, slow moving vibrant color plasma) */}
+                <div className="absolute inset-0 flex items-center justify-center mix-blend-screen transition-transform duration-1000"
+                    style={{ transform: `scale(${hover ? 1.1 : 0.9})` }}>
+                    <div className="absolute w-[50%] h-[50%] bg-[#E8604C] blur-[90px] rounded-[40%_60%_70%_30%] animate-[spin_12s_linear_infinite]" />
+                    <div className="absolute w-[45%] h-[55%] bg-[#C878D0] blur-[90px] rounded-[60%_40%_30%_70%] animate-[spin_18s_linear_infinite_reverse]" />
+                    <div className="absolute w-[60%] h-[45%] bg-[#38BDF8] blur-[90px] rounded-[50%_50%_60%_40%] animate-[spin_24s_linear_infinite]" />
                 </div>
 
-                {/* 4. Drifting Quantum Sparks (Parallax) */}
-                <div className="absolute inset-0 z-10"
+                {/* 2. Structured 'God Rays' (High-tech geometric light beams) */}
+                <div className="absolute inset-0 mix-blend-overlay opacity-50 animate-[spin_60s_linear_infinite]"
                     style={{
-                        transform: `translate(${tilt.y * -0.5}px, ${tilt.x * -0.5}px)`,
+                        background: "repeating-conic-gradient(from 0deg, transparent 0deg, transparent 4deg, rgba(255,255,255,0.2) 5deg, transparent 6deg)"
+                    }} />
+
+                {/* 3. Sharp Optical Flare Halo (Recreates the premium rim light) */}
+                <div className="absolute w-[55%] h-[55%] rounded-full border border-white/10 shadow-[0_0_100px_rgba(255,255,255,0.3)_inset] animate-[spin_10s_linear_infinite]"
+                    style={{
+                        background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.6) 15deg, transparent 40deg, transparent 180deg, rgba(255,255,255,0.6) 195deg, transparent 220deg)"
+                    }} />
+
+                {/* 4. Interactive Stellar Dust (Deep Cursor Parallax) */}
+                <div className="absolute inset-0"
+                    style={{
+                        transform: `translate(${tilt.y * -3}px, ${tilt.x * -3}px) scale(1.15)`,
                         transition: hover ? "transform 0.1s ease-out" : "transform 0.6s cubic-bezier(0.33,1,0.68,1)"
                     }}>
-                    <div className="absolute top-[15%] left-[15%] w-1.5 h-1.5 bg-white rounded-full blur-[0.5px] shadow-[0_0_8px_white] animate-[pulse_3s_ease-in-out_infinite]" />
-                    <div className="absolute top-[85%] left-[80%] w-2 h-2 bg-[#E8604C] rounded-full blur-[1px] shadow-[0_0_12px_#E8604C] animate-[pulse_4s_ease-in-out_infinite_reverse]" />
-                    <div className="absolute top-[75%] left-[10%] w-1.5 h-1.5 bg-[#C878D0] rounded-full blur-[0.5px] shadow-[0_0_10px_#C878D0] animate-[ping_5s_ease-in-out_infinite]" />
-                    <div className="absolute top-[20%] left-[85%] w-1 h-1 bg-white rounded-full shadow-[0_0_5px_white] animate-[ping_6s_ease-in-out_infinite_reverse]" />
+                    <div className="absolute inset-0 opacity-40 mix-blend-screen animate-[pulse_3s_ease-in-out_infinite]"
+                        style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.9) 1.5px, transparent 1.5px)", backgroundSize: "50px 50px", backgroundPosition: "0 0" }} />
+                    <div className="absolute inset-0 opacity-20 mix-blend-screen animate-[pulse_5s_ease-in-out_infinite_reverse]"
+                        style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.7) 2px, transparent 2px)", backgroundSize: "80px 80px", backgroundPosition: "30px 30px" }} />
+                    <div className="absolute inset-0 opacity-30 mix-blend-screen"
+                        style={{ backgroundImage: "radial-gradient(circle, rgba(232,96,76,0.8) 1.5px, transparent 1.5px)", backgroundSize: "110px 110px", backgroundPosition: "15px 50px" }} />
                 </div>
             </div>
 
