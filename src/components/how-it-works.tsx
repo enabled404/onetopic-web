@@ -66,50 +66,97 @@ export default function HowItWorks() {
                     </div>
                 </div>
 
-                {/* Vertical steps - CENTERED 8 COLS */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-                    <div className="md:col-start-3 md:col-span-8 relative">
-                        {/* Track line */}
-                        <div className="absolute left-[27px] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/[0.08] to-transparent" />
-                        <motion.div className="absolute left-[27px] w-0.5 h-32 z-[1]"
-                            style={{ top: laserTop, background: "linear-gradient(180deg, transparent, #E8604C 40%, #E8604C 60%, transparent)", borderRadius: 2, boxShadow: "0 0 12px rgba(232,96,76,0.5)" }} />
+                <div className="relative max-w-5xl mx-auto mt-24">
+                    {/* Glowing timeline track */}
+                    <div className="absolute left-[39px] md:left-[50%] top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-white/5 to-transparent shadow-[0_0_15px_rgba(255,255,255,0.05)]" />
 
-                        <div className="space-y-12">
-                            {steps.map((step, i) => (
-                                <motion.div key={step.num}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true, margin: "-60px" }}
-                                    transition={{ duration: 0.5, delay: i * 0.15 }}
-                                    className="flex gap-8 items-start relative">
-                                    {/* Step marker */}
-                                    <div className="shrink-0 w-14 h-14 rounded-2xl bg-[#18181D] border border-white/[0.08] flex flex-col items-center justify-center gap-0.5 relative z-[2] shadow-xl">
-                                        <AuroraOrb size={6} />
-                                        <span className="step-counter text-xs">{step.num}</span>
+                    {/* Pulsing laser that follows scroll */}
+                    <motion.div
+                        className="absolute left-[39px] md:left-[50%] -translate-x-1/2 w-1 rounded-full z-[1] shadow-[0_0_20px_#E8604C,0_0_40px_#E8604C]"
+                        style={{
+                            top: laserTop,
+                            height: "15%",
+                            background: "linear-gradient(180deg, transparent, #E8604C 40%, #FF9A8B 50%, #E8604C 60%, transparent)",
+                        }}
+                    />
+
+                    <div className="space-y-16 md:space-y-32 relative z-10">
+                        {steps.map((step, i) => {
+                            const isEven = i % 2 === 0;
+                            return (
+                                <motion.div
+                                    key={step.num}
+                                    initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
+                                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                    viewport={{ margin: "-20%", once: true }}
+                                    transition={{ duration: 0.8, delay: 0.1, type: "spring", stiffness: 80, damping: 20 }}
+                                    className={`flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 relative ${isEven ? 'md:flex-row-reverse' : ''}`}
+                                >
+
+                                    {/* Central Node / Marker */}
+                                    <div className="absolute left-[39px] md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-20">
+                                        <motion.div
+                                            whileHover={{ scale: 1.2, rotate: 90 }}
+                                            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                                            className="w-14 h-14 rounded-2xl bg-[#08080A] border-[1.5px] border-white/10 flex flex-col items-center justify-center relative shadow-[0_0_30px_rgba(0,0,0,0.8)] overflow-hidden group cursor-default"
+                                        >
+                                            {/* Glowing core logic based on step color */}
+                                            <div className="absolute inset-0 opacity-20 group-hover:opacity-60 transition-opacity duration-500"
+                                                style={{ background: `radial-gradient(circle at 50% 50%, ${step.color}, transparent 70%)` }} />
+                                            <AuroraOrb size={8} />
+                                            <span className="text-[10px] font-bold tracking-widest text-white/90 mt-1 relative z-10">{step.num}</span>
+                                        </motion.div>
                                     </div>
 
-                                    {/* Card */}
-                                    <MagneticCard className="p-8 sm:p-10 flex-1" variant="dark" tiltStrength={3}>
-                                        <div className="icon-box mb-6 w-12 h-12 rounded-xl" style={{ background: `${step.color}18`, borderColor: `${step.color}30` }}>
-                                            <step.icon className="w-5 h-5" style={{ color: step.color }} strokeWidth={1.8} />
-                                        </div>
-                                        <h3 className="text-xl font-bold text-heading mb-3 tracking-tight">{step.title}</h3>
-                                        <p className="text-[15px] text-[#9A9A9F] leading-relaxed">{step.desc}</p>
-                                    </MagneticCard>
+                                    {/* Spacer for alternating layout (Desktop only) */}
+                                    <div className="hidden md:block w-1/2" />
+
+                                    {/* Content Card */}
+                                    <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${isEven ? 'md:pr-16 text-left md:text-right' : 'md:pl-16 text-left'}`}>
+                                        <MagneticCard className="p-8 sm:p-10 group relative overflow-hidden" variant="dark" tiltStrength={5}>
+
+                                            {/* Interactive hover spotlight inside card */}
+                                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                                                style={{ background: `radial-gradient(circle at top ${isEven ? 'right' : 'left'}, ${step.color}15, transparent 60%)` }} />
+
+                                            <div className={`flex flex-col ${isEven ? 'md:items-end' : 'items-start'} mb-6 relative z-10`}>
+                                                <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1"
+                                                    style={{ background: `${step.color}18`, border: `1px solid ${step.color}30`, boxShadow: `0 8px 32px ${step.color}15` }}>
+                                                    <step.icon className="w-6 h-6" style={{ color: step.color }} strokeWidth={2} />
+                                                </div>
+                                            </div>
+
+                                            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight leading-tight relative z-10 group-hover:text-glow transition-all duration-300" style={{ textShadow: `0 0 20px ${step.color}40` }}>
+                                                {step.title}
+                                            </h3>
+
+                                            <p className="text-[16px] text-[#8A8A93] leading-relaxed relative z-10 group-hover:text-white/80 transition-colors duration-300">
+                                                {step.desc}
+                                            </p>
+
+                                            {/* Accent line based on step color */}
+                                            <div className={`absolute bottom-0 h-1 transition-all duration-500 rounded-full opacity-50 group-hover:opacity-100 group-hover:w-1/2 w-0 ${isEven ? 'right-0 bg-gradient-to-l' : 'left-0 bg-gradient-to-r'} from-transparent to-${step.color}`}
+                                                style={{ backgroundImage: `linear-gradient(to ${isEven ? 'left' : 'right'}, transparent, ${step.color})` }} />
+                                        </MagneticCard>
+                                    </div>
+
                                 </motion.div>
-                            ))}
-                        </div>
+                            );
+                        })}
                     </div>
                 </div>
 
-                {/* Community note */}
-                <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }} transition={{ delay: 0.15 }}
-                    className="mt-20 text-center flex justify-center">
-                    <MagneticCard className="inline-flex items-center gap-4 px-8 py-5 rounded-full" tiltStrength={4} variant="dark">
-                        <Users className="w-5 h-5 text-[#E8604C] shrink-0" strokeWidth={1.8} />
-                        <span className="text-[15px] text-heading font-medium tracking-wide">Propose topics. Vote on what matters. The community decides.</span>
-                    </MagneticCard>
+                {/* Community note - Elevated aesthetic */}
+                <motion.div initial={{ opacity: 0, y: 20, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
+                    className="mt-28 text-center flex justify-center relative z-10">
+                    <div className="relative inline-flex group cursor-default">
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#E8604C] to-[#38BDF8] rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 animate-[spin_4s_linear_infinite]" />
+                        <MagneticCard className="relative flex items-center gap-4 px-8 py-5 rounded-full border border-white/10 bg-[#08080A]/80 backdrop-blur-xl" tiltStrength={8} variant="dark">
+                            <Users className="w-5 h-5 text-[#E8604C] shrink-0 animate-pulse" strokeWidth={2} />
+                            <span className="text-[15px] text-white/90 font-medium tracking-wide">Propose topics. Vote on what matters. <span className="text-white font-bold drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">The community decides.</span></span>
+                        </MagneticCard>
+                    </div>
                 </motion.div>
             </div>
         </section>
