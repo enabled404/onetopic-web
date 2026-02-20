@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import DownloadBtn from "./download-btn";
 
 const APP_STORE_URL = "https://apps.apple.com/us/app/onetopic/id6754181660";
 
@@ -47,9 +48,7 @@ export default function Navbar() {
                 {/* CTA + hamburger */}
                 <div className="flex items-center gap-3 shrink-0">
                     <div className="hidden md:block">
-                        <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="btn-liquid-wrap">
-                            <span className="btn-liquid-inner !py-[9px] !px-5 !text-[13px]">Download</span>
-                        </a>
+                        <DownloadBtn size="sm" label="Download" />
                     </div>
 
                     <button
@@ -81,10 +80,9 @@ export default function Navbar() {
                             {link.label}
                         </a>
                     ))}
-                    <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer"
-                        className="block mt-3 btn-liquid-wrap w-full text-center">
-                        <span className="btn-liquid-inner !w-full !justify-center">Download App</span>
-                    </a>
+                    <div className="mt-3 block w-full">
+                        <DownloadBtn size="md" label="Download App" className="w-full" />
+                    </div>
                 </div>
             )}
         </header>
