@@ -31,6 +31,75 @@ const steps = [
     },
 ];
 
+const TimelineVisual = ({ index }: { index: number }) => {
+    if (index === 0) {
+        return (
+            <div className="absolute inset-0 flex items-center justify-center [perspective:1000px] opacity-80 mix-blend-screen pointer-events-none mt-10">
+                {/* 3D Sonar Drop Ripple */}
+                <div className="relative w-80 h-80 flex items-center justify-center" style={{ transform: "rotateX(60deg) rotateZ(-30deg)", transformStyle: "preserve-3d" }}>
+                    <div className="absolute inset-0 rounded-full border border-[#38BDF8]/30 shadow-[0_0_50px_rgba(56,189,248,0.2)_inset] animate-[ping_4s_ease-out_infinite]" />
+                    <div className="absolute inset-6 rounded-full border border-[#38BDF8]/40 animate-[ping_4s_ease-out_infinite_1s]" />
+                    <div className="absolute inset-16 rounded-full border border-[#38BDF8]/50 animate-[ping_4s_ease-out_infinite_2s]" />
+
+                    <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#38BDF8]/80 border-r-[#38BDF8]/20 animate-[spin_3s_linear_infinite]" />
+                    <div className="absolute w-56 h-56 rounded-full border border-[#38BDF8]/30 border-dashed animate-[spin_8s_linear_infinite_reverse]" />
+
+                    <div className="absolute w-16 h-16 rounded-full bg-gradient-to-br from-[#38BDF8] to-transparent blur-[3px] shadow-[0_0_50px_rgba(56,189,248,1)] animate-pulse" style={{ transform: "translateZ(40px)" }} />
+                    <div className="absolute w-2 h-2 bg-white rounded-full shadow-[0_0_15px_white]" style={{ transform: "translateZ(55px)" }} />
+                </div>
+            </div>
+        );
+    }
+    if (index === 1) {
+        return (
+            <div className="absolute inset-0 flex items-center justify-center [perspective:1000px] opacity-90 pointer-events-none mt-10">
+                {/* Duality Monoliths */}
+                <div className="relative w-72 h-72 flex items-center justify-center animate-[spin_25s_linear_infinite]" style={{ transformStyle: "preserve-3d" }}>
+                    <div className="absolute w-32 h-48 rounded-2xl border border-[#E8604C]/50 bg-[#E8604C]/10 backdrop-blur-md shadow-[0_0_50px_rgba(232,96,76,0.3)] animate-[bounce_6s_ease-in-out_infinite]"
+                        style={{ transform: "translateZ(50px) rotateY(-25deg) rotateX(15deg)", transformStyle: "preserve-3d" }}>
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#E8604C]/20 to-transparent rounded-2xl" />
+                        <div className="absolute -inset-2 border border-[#E8604C]/20 rounded-2xl" style={{ transform: "translateZ(-15px)" }} />
+                    </div>
+
+                    <div className="absolute w-32 h-48 rounded-2xl border border-[#34D399]/50 bg-[#34D399]/10 backdrop-blur-md shadow-[0_0_50px_rgba(52,211,153,0.3)] animate-[bounce_6s_ease-in-out_infinite_3s]"
+                        style={{ transform: "translateZ(-50px) rotateY(25deg) rotateX(-15deg)", transformStyle: "preserve-3d" }}>
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#34D399]/20 to-transparent rounded-2xl" />
+                        <div className="absolute -inset-2 border border-[#34D399]/20 rounded-2xl" style={{ transform: "translateZ(-15px)" }} />
+                    </div>
+
+                    <div className="absolute w-1 h-56 bg-white/40 blur-[2px] shadow-[0_0_20px_white] mix-blend-screen" style={{ transform: "rotateZ(45deg) rotateX(90deg)" }} />
+                </div>
+            </div>
+        );
+    }
+    if (index === 2) {
+        return (
+            <div className="absolute inset-0 flex items-center justify-center [perspective:1000px] opacity-90 mix-blend-screen pointer-events-none mt-10">
+                {/* Global Neural Sphere */}
+                <div className="relative w-80 h-80 flex items-center justify-center animate-[spin_30s_linear_infinite]" style={{ transformStyle: "preserve-3d" }}>
+                    <div className="absolute inset-6 rounded-full border border-[#FBBF24]/30 shadow-[0_0_30px_rgba(251,191,36,0.1)_inset]" style={{ transform: "rotateX(75deg)" }} />
+                    <div className="absolute inset-6 rounded-full border border-[#FBBF24]/30 shadow-[0_0_30px_rgba(251,191,36,0.1)_inset]" style={{ transform: "rotateX(75deg) rotateY(60deg)" }} />
+                    <div className="absolute inset-6 rounded-full border border-[#FBBF24]/30 shadow-[0_0_30px_rgba(251,191,36,0.1)_inset]" style={{ transform: "rotateX(75deg) rotateY(120deg)" }} />
+
+                    <div className="absolute inset-0 animate-[spin_10s_linear_infinite]" style={{ transformStyle: "preserve-3d" }}>
+                        <div className="absolute top-[15%] left-[25%] w-3 h-3 bg-[#FBBF24] rounded-full shadow-[0_0_20px_#FBBF24]" style={{ transform: "translateZ(90px)" }} />
+                        <div className="absolute bottom-[20%] right-[15%] w-2 h-2 bg-white rounded-full shadow-[0_0_15px_white]" style={{ transform: "translateZ(-70px)" }} />
+                        <div className="absolute top-[45%] right-[85%] w-5 h-5 bg-[#FBBF24]/80 rounded-full blur-[1px] shadow-[0_0_30px_#FBBF24]" style={{ transform: "translateZ(130px)" }} />
+                    </div>
+
+                    <div className="absolute inset-0 animate-[spin_15s_linear_infinite_reverse]" style={{ transformStyle: "preserve-3d" }}>
+                        <div className="absolute top-[85%] left-[55%] w-3 h-3 bg-[#FDE68A] rounded-full shadow-[0_0_25px_#FDE68A]" style={{ transform: "translateZ(40px)" }} />
+                        <div className="absolute top-[25%] right-[35%] w-2.5 h-2.5 bg-white/90 rounded-full shadow-[0_0_15px_white]" style={{ transform: "translateZ(-100px)" }} />
+                    </div>
+
+                    <div className="absolute w-32 h-32 bg-[radial-gradient(circle,rgba(251,191,36,0.4),transparent_70%)] rounded-full blur-xl animate-pulse" />
+                </div>
+            </div>
+        );
+    }
+    return null;
+};
+
 export default function HowItWorks() {
     const ref = useRef<HTMLElement>(null);
     const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -108,8 +177,10 @@ export default function HowItWorks() {
                                         </motion.div>
                                     </div>
 
-                                    {/* Spacer for alternating layout (Desktop only) */}
-                                    <div className="hidden md:block w-1/2" />
+                                    {/* S-Tier Holographic Data Sculptures for alternating layout */}
+                                    <div className="hidden md:flex w-1/2 relative min-h-[350px] items-center justify-center">
+                                        <TimelineVisual index={i} />
+                                    </div>
 
                                     {/* Content Card */}
                                     <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${isEven ? 'md:pr-16 text-left md:text-right' : 'md:pl-16 text-left'}`}>
