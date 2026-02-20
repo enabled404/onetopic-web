@@ -1,19 +1,79 @@
 "use client";
 
 import { useRef, useState, useCallback, useEffect } from "react";
-import Image from "next/image"; // Keep Image import as it's used in the app content
+import Image from "next/image";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Environment, MeshTransmissionMaterial, Float, Lightformer } from "@react-three/drei";
+import * as THREE from "three";
 
 /* ────────────────────────────────────────────
-   PHONE MOCKUP — S-TIER SOPHISTICATED
-   • Restored raw, zero-latency cursor tracking for snappy tilt
-   • Removed all noisy backgrounds and flat floating icons
-   • Introduced a highly polished, Apple-grade Aurora Mesh 
-     (Coral & Emerald) with premium cinematic noise grain
+   THE 2026 S-TIER GLASS MONOLITH BACKGROUND
+   An absolute pinnacle WebGL scene utilizing deep
+   glass refraction, chromatic aberration, and 
+   real-time environment lighting.
+   ──────────────────────────────────────────── */
+
+function GlassMonolith({ mouse }: { mouse: { x: number, y: number } }) {
+    const mesh = useRef<THREE.Mesh>(null);
+
+    useFrame((state, delta) => {
+        if (!mesh.current) return;
+        // Subtle ambient continuous rotation
+        mesh.current.rotation.x += delta * 0.15;
+        mesh.current.rotation.y += delta * 0.2;
+
+        // Fluid Parallax tracking towards the mouse
+        const targetX = mouse.x * 2.5;
+        const targetY = -(mouse.y * 2.5);
+
+        mesh.current.position.x += (targetX - mesh.current.position.x) * 0.05;
+        mesh.current.position.y += (targetY - mesh.current.position.y) * 0.05;
+    });
+
+    return (
+        <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
+            <mesh ref={mesh} scale={2}>
+                {/* A sleek, abstract modern crystal (Icosahedron D20 shape) */}
+                <icosahedronGeometry args={[1, 0]} />
+                {/* 
+                  The billion-dollar shader: Real-time transmission, 
+                  chromatic aberration, and iridescence.
+                */}
+                <MeshTransmissionMaterial
+                    backside
+                    samples={4}
+                    thickness={1.5}
+                    chromaticAberration={0.5}
+                    anisotropy={0.3}
+                    distortion={0.2}
+                    distortionScale={0.3}
+                    temporalDistortion={0.1}
+                    iridescence={1}
+                    iridescenceIOR={1.5}
+                    iridescenceThicknessRange={[0, 1400]}
+                    clearcoat={1}
+                    clearcoatRoughness={0}
+                    transmission={1}
+                    roughness={0.05}
+                    color="#ffffff"
+                    attenuationDistance={2}
+                    attenuationColor="#E8604C"
+                />
+            </mesh>
+        </Float>
+    );
+}
+
+/* ────────────────────────────────────────────
+   PHONE MOCKUP 
+   Restored raw, zero-latency cursor tracking for snappy tilt
+   Backed by an ungodly beautiful WebGL scene.
    ──────────────────────────────────────────── */
 
 export default function PhoneMockup() {
     const ref = useRef<HTMLDivElement>(null);
     const [tilt, setTilt] = useState({ x: 0, y: 0 }); // Snappy raw tracking
+    const [mouseRaw, setMouseRaw] = useState({ x: 0, y: 0 }); // -0.5 to 0.5 mapped
     const [spot, setSpot] = useState({ x: 50, y: 50 });
     const [hover, setHover] = useState(false);
     const raf = useRef(0);
@@ -28,6 +88,7 @@ export default function PhoneMockup() {
             const ny = (e.clientY - r.top) / r.height;
             // Snappy raw tilt mapping
             setTilt({ x: (ny - 0.5) * -25, y: (nx - 0.5) * 25 });
+            setMouseRaw({ x: nx - 0.5, y: ny - 0.5 });
             setSpot({ x: nx * 100, y: ny * 100 });
         });
     }, []);
@@ -36,6 +97,7 @@ export default function PhoneMockup() {
     const onLeave = useCallback(() => {
         setHover(false);
         setTilt({ x: 0, y: 0 });
+        setMouseRaw({ x: 0, y: 0 });
         setSpot({ x: 50, y: 50 });
     }, []);
 
@@ -54,43 +116,30 @@ export default function PhoneMockup() {
             className="relative w-full max-w-[300px] mx-auto cursor-default py-[60px]"
             style={{ perspective: "1000px" }}
         >
-            {/* ── S-TIER SOPHISTICATED MESH AURA ── 
-                A pristine, minimal, grain-textured dual-color mesh gradient.
-                Coral (#E8604C) meets Emerald (#10b981) — pure app palette.
-            */}
-            <div className="absolute inset-x-[-150px] inset-y-[-100px] pointer-events-none z-0 flex items-center justify-center transition-all duration-700 ease-out"
-                style={{
-                    opacity: hover ? 1 : 0.45,
-                    transform: `scale(${hover ? 1.05 : 0.95})`,
-                }}>
+            {/* ── S-TIER WEBGL GLASS MONOLITH ── */}
+            <div className="absolute inset-[0px] -left-[300px] -right-[300px] -top-[150px] -bottom-[150px] pointer-events-none z-0 transition-opacity duration-1000"
+                style={{ opacity: hover ? 1 : 0.6 }}>
 
-                {/* The deep, smooth bloom structure */}
-                <div className="absolute inset-0 rounded-full overflow-hidden blur-[70px] mix-blend-screen opacity-90" style={{ transform: "translateZ(-100px)" }}>
-                    {/* Emerald Base */}
-                    <div className="absolute top-[10%] left-[20%] w-[50%] h-[50%] bg-[#10b981]/40 rounded-full mix-blend-screen animate-[spin_20s_linear_infinite]" />
-                    {/* Coral Base */}
-                    <div className="absolute bottom-[20%] right-[10%] w-[60%] h-[60%] bg-[#E8604C]/50 rounded-full mix-blend-screen animate-[spin_25s_linear_infinite_reverse]" />
-                    {/* Deep Gold Accent */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] bg-[#FBBF24]/30 rounded-full mix-blend-screen animate-[pulse_8s_ease-in-out_infinite]" />
-                </div>
+                {/* Subtle ambient backdrop behind the 3D canvas */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(232,96,76,0.05)_0%,transparent_60%)] mix-blend-screen" />
 
-                {/* Premium details: An impossibly fine, perfectly crisp ambient orbit ring */}
-                <div className="absolute w-[80%] pt-[80%] rounded-full border border-white/[0.04] shadow-[0_0_60px_rgba(255,255,255,0.02)_inset]"
-                    style={{
-                        transform: `translateZ(-50px) rotateX(${tilt.x * 0.4}deg) rotateY(${tilt.y * 0.4}deg)`,
-                        transition: "transform 0.1s ease-out"
-                    }}>
-                    {/* Sub-surface illuminated arcs */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-[1px] bg-gradient-to-r from-transparent via-[#E8604C]/60 to-transparent blur-[1px]" />
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40%] h-[1px] bg-gradient-to-r from-transparent via-[#10b981]/60 to-transparent blur-[1px]" />
-                </div>
+                <Canvas camera={{ position: [0, 0, 6], fov: 35 }} style={{ background: "transparent" }} dpr={[1, 2]}>
+                    <ambientLight intensity={0.2} />
+                    <directionalLight position={[10, 10, 5]} intensity={1.5} color="#E8604C" />
+                    <directionalLight position={[-10, -10, -5]} intensity={1} color="#10b981" />
 
-                {/* High-end cinematic noise grain overlay */}
-                <div className="absolute inset-0 opacity-[0.25] mix-blend-overlay pointer-events-none rounded-full z-10 mask-radial"
-                    style={{
-                        backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
-                        WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 80%)"
-                    }} />
+                    <GlassMonolith mouse={mouseRaw} />
+
+                    {/* Impossibly clean studio lighting environment for the glass to refract */}
+                    <Environment resolution={256}>
+                        <group rotation={[-Math.PI / 2, 0, 0]}>
+                            <Lightformer intensity={4} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[10, 10, 1]} />
+                            <Lightformer intensity={2} rotation-y={Math.PI / 2} position={[-5, 1, -1]} scale={[20, 0.1, 1]} />
+                            <Lightformer rotation-y={Math.PI / 2} position={[-5, -1, -1]} scale={[20, 0.5, 1]} />
+                            <Lightformer rotation-y={-Math.PI / 2} position={[10, 1, 0]} scale={[20, 1, 1]} />
+                        </group>
+                    </Environment>
+                </Canvas>
             </div>
 
             {/* ══════ PHONE BODY ══════ */}
@@ -104,7 +153,7 @@ export default function PhoneMockup() {
             >
                 {/* ── DARK REFLECTIVE BEZEL — Space Black titanium ── */}
                 <div
-                    className="rounded-[52px] p-[8px] relative"
+                    className="rounded-[52px] p-[8px] relative shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
                     style={{
                         background: `linear-gradient(${bezelAngle}deg,
                             #1A1A1F 0%,
