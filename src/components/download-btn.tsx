@@ -80,9 +80,20 @@ export default function DownloadBtn({ className = "", size = "md", label = "Down
             `}
             style={{ WebkitTapHighlightColor: "transparent" }}
         >
+            {/* 0. Ambient breathing aura (Idle State) */}
+            <div
+                className="absolute inset-[-20px] -z-30 rounded-full bg-[#E8604C]/10 mix-blend-screen opacity-50 group-hover:opacity-0 transition-opacity duration-700 animate-[pulse_4s_ease-in-out_infinite]"
+                style={{ filter: "blur(20px)" }}
+            />
+
             {/* 1. Spinning gradient border layer under mask */}
-            <div className="absolute inset-[-4px] -z-20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+            <div className="absolute inset-[-4px] -z-20 rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-700">
                 <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0%,#E8604C_20%,#FF9A8B_40%,transparent_60%,#3DDC84_80%,transparent_100%)] animate-[spin_3s_linear_infinite] blur-[2px]" />
+            </div>
+
+            {/* 1.5. Continuous Sheen sweep (Idle State) */}
+            <div className="absolute inset-0 -z-15 group-hover:opacity-0 transition-opacity duration-500">
+                <div className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_5s_infinite_ease-in-out]" style={{ transform: "skewX(-20deg)" }} />
             </div>
 
             {/* 2. Inner Black Mask to hide spinning border center */}
@@ -94,8 +105,8 @@ export default function DownloadBtn({ className = "", size = "md", label = "Down
             {/* 4. Top inner glass reflection */}
             <div className="absolute top-[1px] inset-x-[2px] -z-10 pointer-events-none rounded-t-full bg-gradient-to-b from-white/[0.12] to-transparent h-[40%]" />
 
-            {/* 5. Subtle base warmth always present */}
-            <div className="absolute bottom-0 inset-x-0 h-1/2 -z-10 rounded-b-full bg-gradient-to-t from-[#E8604C]/20 to-transparent opacity-50 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none" />
+            {/* 5. Subtle base warmth perfectly scaled */}
+            <div className="absolute bottom-0 inset-x-0 h-[60%] -z-10 rounded-b-full bg-gradient-to-t from-[#E8604C]/30 to-transparent mix-blend-screen opacity-60 group-hover:opacity-0 transition-opacity duration-500 animate-[pulse_3s_ease-in-out_infinite_alternate] pointer-events-none" />
 
             {/* 6. Mouse tracking ambient spotlight effect (Active on Hover) */}
             <motion.div
@@ -132,13 +143,15 @@ export default function DownloadBtn({ className = "", size = "md", label = "Down
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                 </svg>
                 {/* Text Label */}
-                <span className="font-semibold text-white/90 group-hover:text-white transition-colors duration-300 tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                <span className="font-semibold text-white/90 group-hover:text-white transition-colors duration-300 tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] flex items-center gap-1.5">
                     {label}
+                    {/* Add a subtle visual cue arrow */}
+                    <svg className="w-3.5 h-3.5 text-[#E8604C] -translate-x-1 opacity-60 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                 </span>
             </div>
 
             {/* Shimmer line across top border */}
-            <div className="absolute top-0 inset-x-8 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 inset-x-8 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity duration-500 animate-[pulse_3s_ease-in-out_infinite]" />
         </motion.a>
     );
 }
