@@ -142,37 +142,44 @@ export default function Problem() {
             <div className="absolute inset-0 bg-grid-dark opacity-30 pointer-events-none" />
 
             <div className="relative z-10 container-standard">
-                {/* S-Tier Section Header */}
-                <div className="mb-14 text-center max-w-3xl mx-auto flex flex-col items-center">
+                {/* Prominent S-Tier Glass Badge Header */}
+                <div className="mb-14 flex justify-center">
                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="flex items-center gap-3 mb-6"
+                        className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/[0.03] border border-white/[0.08] shadow-[0_0_20px_rgba(255,255,255,0.05)_inset,0_4px_20px_rgba(0,0,0,0.5)] backdrop-blur-md relative overflow-hidden"
                     >
-                        <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-white/40" />
-                        <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-white/80 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+                        {/* Shimmer trace */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_4s_infinite_ease-in-out]" />
+
+                        {/* Glowing dot left */}
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/90 shadow-[0_0_8px_rgba(255,255,255,0.9)] animate-[pulse_3s_infinite]" />
+
+                        <span className="text-[12px] font-bold tracking-[0.3em] uppercase text-white/90 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] relative mt-px">
                             The Problem
                         </span>
-                        <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-white/40" />
+
+                        {/* Glowing dot right */}
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/90 shadow-[0_0_8px_rgba(255,255,255,0.9)] animate-[pulse_3s_infinite_1s]" />
                     </motion.div>
-
-                    <div className="mt-6">
-                        <TextReveal className="text-5xl sm:text-6xl font-bold tracking-tighter leading-none text-heading text-center" delay={0.1}>
-                            Social media gave us a voice.
-                        </TextReveal>
-                        <TextReveal className="text-5xl sm:text-6xl font-bold tracking-tighter leading-none text-coral text-center" delay={0.25}>
-                            Then stole our attention.
-                        </TextReveal>
-                    </div>
                 </div>
 
-                {/* Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-                    {problems.map((item, i) => (
-                        <StatCounter key={item.title} item={item} index={i} />
-                    ))}
+                <div className="mt-6">
+                    <TextReveal className="text-5xl sm:text-6xl font-bold tracking-tighter leading-none text-heading text-center" delay={0.1}>
+                        Social media gave us a voice.
+                    </TextReveal>
+                    <TextReveal className="text-5xl sm:text-6xl font-bold tracking-tighter leading-none text-coral text-center" delay={0.25}>
+                        Then stole our attention.
+                    </TextReveal>
                 </div>
+            </div>
+
+            {/* Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                {problems.map((item, i) => (
+                    <StatCounter key={item.title} item={item} index={i} />
+                ))}
             </div>
         </section>
     );

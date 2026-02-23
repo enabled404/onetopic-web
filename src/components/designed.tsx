@@ -43,76 +43,91 @@ export default function Designed() {
             <div className="absolute inset-0 bg-grid-dark opacity-30 pointer-events-none" />
 
             <div className="relative z-10 container-standard">
-                {/* Header */}
-                <div className="mb-14 text-center max-w-3xl mx-auto">
-                    <motion.span initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }} className="section-label inline-flex">
-                        Experience
-                    </motion.span>
+                {/* Prominent S-Tier Glass Badge Header */}
+                <div className="mb-14 flex justify-center">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/[0.03] border border-white/[0.08] shadow-[0_0_20px_rgba(255,255,255,0.05)_inset,0_4px_20px_rgba(0,0,0,0.5)] backdrop-blur-md relative overflow-hidden"
+                    >
+                        {/* Shimmer trace */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_4s_infinite_ease-in-out]" />
 
-                    <div className="mt-6">
-                        <TextReveal className="text-5xl sm:text-6xl font-bold tracking-tighter leading-none text-heading text-center" delay={0.1}>
-                            Designed for
-                        </TextReveal>
-                        <TextReveal className="text-5xl sm:text-6xl font-bold tracking-tighter leading-none text-coral text-center" delay={0.2}>
-                            human connection.
-                        </TextReveal>
-                    </div>
+                        {/* Glowing dot left */}
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/90 shadow-[0_0_8px_rgba(255,255,255,0.9)] animate-[pulse_3s_infinite]" />
 
-                    <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }} transition={{ delay: 0.3 }}
-                        className="mt-5 text-lg text-[#8A8A93] leading-relaxed text-center max-w-2xl mx-auto">
-                        Every pixel intentional. Every interaction meaningful.
-                    </motion.p>
+                        <span className="text-[12px] font-bold tracking-[0.3em] uppercase text-white/90 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] relative mt-px">
+                            Experience
+                        </span>
+
+                        {/* Glowing dot right */}
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/90 shadow-[0_0_8px_rgba(255,255,255,0.9)] animate-[pulse_3s_infinite_1s]" />
+                    </motion.div>
                 </div>
 
-                {/* 3 Col Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-                    {cards.map((card, i) => (
-                        <motion.div key={card.tag}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-60px" }}
-                            transition={{ duration: 0.5, delay: i * 0.1 }}>
-                            <MagneticCard className="p-0 h-full flex flex-col overflow-hidden" variant="dark">
-                                {/* Top content area */}
-                                <div className="p-8 sm:p-10 flex-1 flex flex-col relative">
-                                    {/* Prominent number */}
-                                    <span
-                                        className="absolute top-5 right-6 font-mono text-6xl font-black select-none pointer-events-none leading-none"
-                                        style={{ color: card.color, opacity: 0.08 }}
-                                    >
-                                        {card.num}
-                                    </span>
+                <div className="mt-6">
+                    <TextReveal className="text-5xl sm:text-6xl font-bold tracking-tighter leading-none text-heading text-center" delay={0.1}>
+                        Designed for
+                    </TextReveal>
+                    <TextReveal className="text-5xl sm:text-6xl font-bold tracking-tighter leading-none text-coral text-center" delay={0.2}>
+                        human connection.
+                    </TextReveal>
+                </div>
 
-                                    {/* Glow behind icon */}
-                                    <div
-                                        className="absolute top-6 left-6 w-20 h-20 rounded-full blur-[25px] opacity-15 pointer-events-none"
-                                        style={{ background: card.color }}
-                                    />
+                <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }} transition={{ delay: 0.3 }}
+                    className="mt-5 text-lg text-[#8A8A93] leading-relaxed text-center max-w-2xl mx-auto">
+                    Every pixel intentional. Every interaction meaningful.
+                </motion.p>
+            </div>
 
-                                    <div className="icon-box mb-5 w-12 h-12 rounded-xl relative z-10" style={{ background: `${card.color}18`, borderColor: `${card.color}30` }}>
-                                        <card.icon className="w-5 h-5" style={{ color: card.color }} strokeWidth={1.8} />
-                                    </div>
+            {/* 3 Col Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+                {cards.map((card, i) => (
+                    <motion.div key={card.tag}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={{ duration: 0.5, delay: i * 0.1 }}>
+                        <MagneticCard className="p-0 h-full flex flex-col overflow-hidden" variant="dark">
+                            {/* Top content area */}
+                            <div className="p-8 sm:p-10 flex-1 flex flex-col relative">
+                                {/* Prominent number */}
+                                <span
+                                    className="absolute top-5 right-6 font-mono text-6xl font-black select-none pointer-events-none leading-none"
+                                    style={{ color: card.color, opacity: 0.08 }}
+                                >
+                                    {card.num}
+                                </span>
 
-                                    <span className="font-mono text-[11px] font-bold tracking-[0.08em] uppercase mb-3 block"
-                                        style={{ color: card.color }}>
-                                        {card.tag}
-                                    </span>
+                                {/* Glow behind icon */}
+                                <div
+                                    className="absolute top-6 left-6 w-20 h-20 rounded-full blur-[25px] opacity-15 pointer-events-none"
+                                    style={{ background: card.color }}
+                                />
 
-                                    <h3 className="text-xl font-bold text-heading mb-3 tracking-tight leading-snug">{card.title}</h3>
-                                    <p className="text-[15px] text-[#9A9A9F] leading-relaxed mt-auto">{card.desc}</p>
+                                <div className="icon-box mb-5 w-12 h-12 rounded-xl relative z-10" style={{ background: `${card.color}18`, borderColor: `${card.color}30` }}>
+                                    <card.icon className="w-5 h-5" style={{ color: card.color }} strokeWidth={1.8} />
                                 </div>
 
-                                {/* Bottom accent bar */}
-                                <div
-                                    className="h-[3px] w-full"
-                                    style={{ background: `linear-gradient(to right, ${card.color}, transparent 80%)`, opacity: 0.3 }}
-                                />
-                            </MagneticCard>
-                        </motion.div>
-                    ))}
-                </div>
+                                <span className="font-mono text-[11px] font-bold tracking-[0.08em] uppercase mb-3 block"
+                                    style={{ color: card.color }}>
+                                    {card.tag}
+                                </span>
+
+                                <h3 className="text-xl font-bold text-heading mb-3 tracking-tight leading-snug">{card.title}</h3>
+                                <p className="text-[15px] text-[#9A9A9F] leading-relaxed mt-auto">{card.desc}</p>
+                            </div>
+
+                            {/* Bottom accent bar */}
+                            <div
+                                className="h-[3px] w-full"
+                                style={{ background: `linear-gradient(to right, ${card.color}, transparent 80%)`, opacity: 0.3 }}
+                            />
+                        </MagneticCard>
+                    </motion.div>
+                ))}
             </div>
         </section>
     );
