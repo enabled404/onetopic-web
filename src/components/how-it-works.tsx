@@ -150,7 +150,7 @@ export default function HowItWorks() {
                 </div>
             </div>
 
-            <div className="relative max-w-5xl mx-auto mt-24">
+            <div className="relative max-w-5xl mx-auto mt-24 px-4 sm:px-6 lg:px-8">
                 {/* Glowing timeline track */}
                 <div className="absolute left-[39px] md:left-[50%] top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-white/5 to-transparent shadow-[0_0_15px_rgba(255,255,255,0.05)]" />
 

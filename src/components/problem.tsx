@@ -145,23 +145,23 @@ export default function Problem() {
                 {/* Prominent S-Tier Glass Badge Header */}
                 <div className="mb-14 flex justify-center">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/[0.03] border border-white/[0.08] shadow-[0_0_20px_rgba(255,255,255,0.05)_inset,0_4px_20px_rgba(0,0,0,0.5)] backdrop-blur-md relative overflow-hidden"
+                        className="inline-flex items-center gap-4 px-8 py-3.5 rounded-full bg-[#08080A]/90 border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.03)_inset,0_0_20px_rgba(0,0,0,0.8)] backdrop-blur-xl relative overflow-hidden group"
                     >
-                        {/* Shimmer trace */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_4s_infinite_ease-in-out]" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#E8604C]/0 via-[#E8604C]/10 to-[#E8604C]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                        {/* Glowing dot left */}
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/90 shadow-[0_0_8px_rgba(255,255,255,0.9)] animate-[pulse_3s_infinite]" />
+                        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-[shimmer_3s_infinite]" />
+                        <div className="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-full animate-[shimmer_3s_infinite_reverse]" />
 
-                        <span className="text-[12px] font-bold tracking-[0.3em] uppercase text-white/90 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] relative mt-px">
+                        <div className="w-2 h-2 rounded-full bg-[#E8604C] shadow-[0_0_12px_rgba(232,96,76,0.9)] animate-pulse" />
+
+                        <span className="text-[13px] font-black tracking-[0.4em] uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] relative mt-px">
                             The Problem
                         </span>
 
-                        {/* Glowing dot right */}
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/90 shadow-[0_0_8px_rgba(255,255,255,0.9)] animate-[pulse_3s_infinite_1s]" />
+                        <div className="w-2 h-2 rounded-full bg-[#E8604C] shadow-[0_0_12px_rgba(232,96,76,0.9)] animate-[pulse_2s_infinite_1s]" />
                     </motion.div>
                 </div>
 
@@ -173,13 +173,13 @@ export default function Problem() {
                         Then stole our attention.
                     </TextReveal>
                 </div>
-            </div>
 
-            {/* Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-                {problems.map((item, i) => (
-                    <StatCounter key={item.title} item={item} index={i} />
-                ))}
+                {/* Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-24">
+                    {problems.map((item, i) => (
+                        <StatCounter key={item.title} item={item} index={i} />
+                    ))}
+                </div>
             </div>
         </section>
     );

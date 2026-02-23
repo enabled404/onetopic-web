@@ -46,23 +46,23 @@ export default function Designed() {
                 {/* Prominent S-Tier Glass Badge Header */}
                 <div className="mb-14 flex justify-center">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/[0.03] border border-white/[0.08] shadow-[0_0_20px_rgba(255,255,255,0.05)_inset,0_4px_20px_rgba(0,0,0,0.5)] backdrop-blur-md relative overflow-hidden"
+                        className="inline-flex items-center gap-4 px-8 py-3.5 rounded-full bg-[#08080A]/90 border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.03)_inset,0_0_20px_rgba(0,0,0,0.8)] backdrop-blur-xl relative overflow-hidden group"
                     >
-                        {/* Shimmer trace */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_4s_infinite_ease-in-out]" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#E8604C]/0 via-[#E8604C]/10 to-[#E8604C]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                        {/* Glowing dot left */}
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/90 shadow-[0_0_8px_rgba(255,255,255,0.9)] animate-[pulse_3s_infinite]" />
+                        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-[shimmer_3s_infinite]" />
+                        <div className="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-full animate-[shimmer_3s_infinite_reverse]" />
 
-                        <span className="text-[12px] font-bold tracking-[0.3em] uppercase text-white/90 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] relative mt-px">
+                        <div className="w-2 h-2 rounded-full bg-[#E8604C] shadow-[0_0_12px_rgba(232,96,76,0.9)] animate-pulse" />
+
+                        <span className="text-[13px] font-black tracking-[0.4em] uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] relative mt-px">
                             Experience
                         </span>
 
-                        {/* Glowing dot right */}
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/90 shadow-[0_0_8px_rgba(255,255,255,0.9)] animate-[pulse_3s_infinite_1s]" />
+                        <div className="w-2 h-2 rounded-full bg-[#E8604C] shadow-[0_0_12px_rgba(232,96,76,0.9)] animate-[pulse_2s_infinite_1s]" />
                     </motion.div>
                 </div>
 
@@ -80,54 +80,54 @@ export default function Designed() {
                     className="mt-5 text-lg text-[#8A8A93] leading-relaxed text-center max-w-2xl mx-auto">
                     Every pixel intentional. Every interaction meaningful.
                 </motion.p>
-            </div>
 
-            {/* 3 Col Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-                {cards.map((card, i) => (
-                    <motion.div key={card.tag}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-60px" }}
-                        transition={{ duration: 0.5, delay: i * 0.1 }}>
-                        <MagneticCard className="p-0 h-full flex flex-col overflow-hidden" variant="dark">
-                            {/* Top content area */}
-                            <div className="p-8 sm:p-10 flex-1 flex flex-col relative">
-                                {/* Prominent number */}
-                                <span
-                                    className="absolute top-5 right-6 font-mono text-6xl font-black select-none pointer-events-none leading-none"
-                                    style={{ color: card.color, opacity: 0.08 }}
-                                >
-                                    {card.num}
-                                </span>
+                {/* 3 Col Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mt-16 sm:mt-24">
+                    {cards.map((card, i) => (
+                        <motion.div key={card.tag}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-60px" }}
+                            transition={{ duration: 0.5, delay: i * 0.1 }}>
+                            <MagneticCard className="p-0 h-full flex flex-col overflow-hidden" variant="dark">
+                                {/* Top content area */}
+                                <div className="p-8 sm:p-10 flex-1 flex flex-col relative">
+                                    {/* Prominent number */}
+                                    <span
+                                        className="absolute top-5 right-6 font-mono text-6xl font-black select-none pointer-events-none leading-none"
+                                        style={{ color: card.color, opacity: 0.08 }}
+                                    >
+                                        {card.num}
+                                    </span>
 
-                                {/* Glow behind icon */}
-                                <div
-                                    className="absolute top-6 left-6 w-20 h-20 rounded-full blur-[25px] opacity-15 pointer-events-none"
-                                    style={{ background: card.color }}
-                                />
+                                    {/* Glow behind icon */}
+                                    <div
+                                        className="absolute top-6 left-6 w-20 h-20 rounded-full blur-[25px] opacity-15 pointer-events-none"
+                                        style={{ background: card.color }}
+                                    />
 
-                                <div className="icon-box mb-5 w-12 h-12 rounded-xl relative z-10" style={{ background: `${card.color}18`, borderColor: `${card.color}30` }}>
-                                    <card.icon className="w-5 h-5" style={{ color: card.color }} strokeWidth={1.8} />
+                                    <div className="icon-box mb-5 w-12 h-12 rounded-xl relative z-10" style={{ background: `${card.color}18`, borderColor: `${card.color}30` }}>
+                                        <card.icon className="w-5 h-5" style={{ color: card.color }} strokeWidth={1.8} />
+                                    </div>
+
+                                    <span className="font-mono text-[11px] font-bold tracking-[0.08em] uppercase mb-3 block"
+                                        style={{ color: card.color }}>
+                                        {card.tag}
+                                    </span>
+
+                                    <h3 className="text-xl font-bold text-heading mb-3 tracking-tight leading-snug">{card.title}</h3>
+                                    <p className="text-[15px] text-[#9A9A9F] leading-relaxed mt-auto">{card.desc}</p>
                                 </div>
 
-                                <span className="font-mono text-[11px] font-bold tracking-[0.08em] uppercase mb-3 block"
-                                    style={{ color: card.color }}>
-                                    {card.tag}
-                                </span>
-
-                                <h3 className="text-xl font-bold text-heading mb-3 tracking-tight leading-snug">{card.title}</h3>
-                                <p className="text-[15px] text-[#9A9A9F] leading-relaxed mt-auto">{card.desc}</p>
-                            </div>
-
-                            {/* Bottom accent bar */}
-                            <div
-                                className="h-[3px] w-full"
-                                style={{ background: `linear-gradient(to right, ${card.color}, transparent 80%)`, opacity: 0.3 }}
-                            />
-                        </MagneticCard>
-                    </motion.div>
-                ))}
+                                {/* Bottom accent bar */}
+                                <div
+                                    className="h-[3px] w-full"
+                                    style={{ background: `linear-gradient(to right, ${card.color}, transparent 80%)`, opacity: 0.3 }}
+                                />
+                            </MagneticCard>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </section>
     );
