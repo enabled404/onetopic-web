@@ -85,7 +85,7 @@ export default function TermsPage() {
 
                         <div className="mt-12 p-6 bg-[#E8604C]/10 border border-[#E8604C]/20 rounded-xl">
                             <h3 className="text-[#E8604C] font-bold mb-2">Liability Disclaimer</h3>
-                            <p className="text-sm m-0">OneTopic operates "as is" without warranties. We are not liable for incidental or consequential damages arising from usage.</p>
+                            <p className="text-sm m-0">OneTopic operates &quot;as is&quot; without warranties. We are not liable for incidental or consequential damages arising from usage.</p>
                         </div>
                     </div>
 

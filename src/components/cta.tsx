@@ -17,38 +17,47 @@ export default function CTA() {
                 style={{ background: "radial-gradient(ellipse, rgba(232,96,76,0.08) 0%, rgba(160,100,220,0.03) 35%, transparent 55%)" }} />
 
             <div className="relative z-10 container-standard text-center">
-                <div className="max-w-4xl mx-auto">
-                    <motion.span initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }} className="section-label inline-flex mb-8">
-                        Join the Movement
-                    </motion.span>
-
-                    <div className="mt-8">
-                        <TextReveal className="text-5xl sm:text-7xl font-bold tracking-tighter leading-none text-heading text-center" delay={0.1}>
-                            Ready to join the
-                        </TextReveal>
-                        <TextReveal className="text-5xl sm:text-7xl font-bold tracking-tighter leading-none text-coral text-center" delay={0.2}>
-                            real conversation?
-                        </TextReveal>
-                    </div>
-
-                    <motion.p initial={{ opacity: 0, y: 10, filter: "blur(3px)" }}
-                        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                        viewport={{ once: true }} transition={{ delay: 0.35 }}
-                        className="mt-8 text-xl sm:text-2xl text-[#8A8A93] leading-relaxed text-center max-w-2xl mx-auto mb-12">
-                        Be part of the first global community where every voice matters equally.
-                    </motion.p>
-
-                    <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }} transition={{ delay: 0.45 }}>
-                        <DownloadBtn size="lg" className="scale-110" />
-                    </motion.div>
-
-                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }} transition={{ delay: 0.55 }} className="mt-8">
-                        <span className="android-soon">Android coming soon</span>
+                {/* S-Tier Section Header */}
+                <div className="mb-8 flex flex-col items-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="flex items-center gap-3"
+                    >
+                        <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-white/40" />
+                        <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-white/80 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+                            Join the Movement
+                        </span>
+                        <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-white/40" />
                     </motion.div>
                 </div>
+
+                <div className="mt-8">
+                    <TextReveal className="text-5xl sm:text-7xl font-bold tracking-tighter leading-none text-heading text-center" delay={0.1}>
+                        Ready to join the
+                    </TextReveal>
+                    <TextReveal className="text-5xl sm:text-7xl font-bold tracking-tighter leading-none text-coral text-center" delay={0.2}>
+                        real conversation?
+                    </TextReveal>
+                </div>
+
+                <motion.p initial={{ opacity: 0, y: 10, filter: "blur(3px)" }}
+                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true }} transition={{ delay: 0.35 }}
+                    className="mt-8 text-xl sm:text-2xl text-[#8A8A93] leading-relaxed text-center max-w-2xl mx-auto mb-12">
+                    Be part of the first global community where every voice matters equally.
+                </motion.p>
+
+                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }} transition={{ delay: 0.45 }}>
+                    <DownloadBtn size="lg" className="scale-110" />
+                </motion.div>
+
+                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }} transition={{ delay: 0.55 }} className="mt-8">
+                    <span className="android-soon">Android coming soon</span>
+                </motion.div>
             </div>
         </section>
     );

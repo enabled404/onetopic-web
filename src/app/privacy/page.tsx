@@ -82,7 +82,7 @@ export default function PrivacyPage() {
                         </ul>
 
                         <div className="mt-12 p-6 bg-[#E8604C]/10 border border-[#E8604C]/20 rounded-xl">
-                            <h3 className="text-[#E8604C] font-bold mb-2">Children's Safety Protocol</h3>
+                            <h3 className="text-[#E8604C] font-bold mb-2">Children&apos;s Safety Protocol</h3>
                             <p className="text-sm m-0">OneTopic is strictly for users aged 13+. We presume no liability for unauthorized access by minors.</p>
                         </div>
                     </div>

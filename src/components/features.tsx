@@ -43,12 +43,20 @@ export default function Features() {
             <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
 
             <div className="relative z-10 container-standard">
-                {/* Header */}
-                <div className="text-center mb-14 max-w-3xl mx-auto">
-                    <motion.span initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }} className="section-label inline-flex">
-                        The Solution
-                    </motion.span>
+                {/* S-Tier Section Header */}
+                <div className="text-center mb-14 max-w-3xl mx-auto flex flex-col items-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="flex items-center gap-3 mb-6"
+                    >
+                        <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-white/40" />
+                        <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-white/80 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+                            The Solution
+                        </span>
+                        <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-white/40" />
+                    </motion.div>
 
                     <div className="mt-6">
                         <TextReveal className="text-5xl sm:text-6xl font-bold tracking-tighter leading-none text-heading text-center" delay={0.1}>

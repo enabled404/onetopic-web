@@ -23,14 +23,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    useEffect(() => {
         const stored = localStorage.getItem("onetopic-theme") as Theme | null;
         if (stored) {
             setTheme(stored);
         }
+        setMounted(true);
     }, []);
 
     useEffect(() => {
