@@ -1,7 +1,6 @@
 "use client";
 
-import { useInView, motion } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { motion, Variants } from "framer-motion";
 
 export default function PixelTransition({
     text,
@@ -10,71 +9,90 @@ export default function PixelTransition({
     text: string,
     className?: string
 }) {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const isInView = useInView(containerRef, { once: true, margin: "-10%" });
     const words = text.split(" ");
 
-    // Prevent hydration mismatches by ensuring client-side execution
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => setIsMounted(true), []);
-
-    if (!isMounted) return <div className={className}><span className="opacity-0">{text}</span></div>;
-
-    // Deterministic pseudo-random engine to provide pure scattering without React hydration errors or layout shifts
-    const seededRandom = (seed: number) => {
-        const x = Math.sin(seed) * 10000;
-        return x - Math.floor(x);
+    // Parent orchestrator
+    const containerVariants: Variants = {
+        hidden: { opacity: 1 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.035, // Fast smooth typing cascade
+                delayChildren: 0.3, // Wait a moment for scroll settling
+            }
+        }
     };
 
     return (
-        <div ref={containerRef} className={`relative inline-flex flex-wrap justify-center ${className}`}>
-            <span className="text-white font-bold relative z-10 py-1 leading-snug flex flex-wrap justify-center">
-                {words.map((word, wordIndex) => (
-                    <span key={wordIndex} className="inline-flex whitespace-nowrap mr-[0.3em]">
-                        {word.split("").map((char, charIndex) => {
-                            // Calculate cascade timing and unique seed ID
-                            const globalIndex = wordIndex * 20 + charIndex;
-                            const delay = 0.1 + (wordIndex * 0.12) + (charIndex * 0.04);
+        <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-10%" }}
+            className={`flex flex-wrap justify-center text-white font-bold leading-snug tracking-wide ${className}`}
+        >
+            {words.map((word, wIdx) => (
+                <span key={wIdx} className="inline-flex whitespace-nowrap mr-[0.3em] overflow-visible">
+                    {word.split("").map((char, cIdx) => {
+                        // Deterministic pseudo-random generation to prevent hydration mismatches
+                        const seed = wIdx * 100 + cIdx;
+                        const rx = (Math.sin(seed) * 150); // Generates values between -150 and 150
+                        const ry = (Math.cos(seed) * 150);
 
-                            // Generate flying trajectory coordinates for the pixels hitting this exact letter
-                            const p1X = (seededRandom(globalIndex) - 0.5) * 200;
-                            const p1Y = (seededRandom(globalIndex + 10) - 0.5) * 200;
-                            const p2X = (seededRandom(globalIndex + 20) - 0.5) * 200;
-                            const p2Y = (seededRandom(globalIndex + 30) - 0.5) * 200;
+                        // Wrapper intercepts stagger step
+                        const wrapperVariants = {
+                            hidden: { opacity: 1 },
+                            visible: { opacity: 1 }
+                        };
 
-                            return (
-                                <span key={`${wordIndex}-${charIndex}`} className="relative inline-block">
-                                    {/* The final typographic character forming from the pixel crash */}
-                                    <motion.span
-                                        initial={{ opacity: 0, filter: "blur(8px)", scale: 0.5 }}
-                                        animate={isInView ? { opacity: 1, filter: "blur(0px)", scale: 1 } : {}}
-                                        transition={{ duration: 0.5, ease: "easeOut", delay: delay + 0.15 }}
-                                        className="inline-block relative z-10"
-                                    >
-                                        {char}
-                                    </motion.span>
+                        // The actual text character fades and shifts in
+                        const charVariants: Variants = {
+                            hidden: { opacity: 0, filter: "blur(12px)", scale: 0.5, y: 15 },
+                            visible: {
+                                opacity: 1,
+                                filter: "blur(0px)",
+                                scale: 1,
+                                y: 0,
+                                transition: { type: "spring" as const, stiffness: 200, damping: 15, mass: 0.5 }
+                            }
+                        };
 
-                                    {/* The Primary White Pixel Shard */}
-                                    <motion.div
-                                        initial={{ opacity: 0, x: p1X, y: p1Y, scale: 0 }}
-                                        animate={isInView ? { opacity: [0, 1, 0], x: 0, y: 0, scale: [0, 1.5, 0] } : {}}
-                                        transition={{ duration: 0.4, ease: "circIn", delay }}
-                                        className="absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-white shadow-[0_0_10px_#ffffff] -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
-                                    />
+                        // The micro-particle flies inward and detonates
+                        const pVariant: Variants = {
+                            hidden: { opacity: 0, x: rx, y: ry, scale: 0 },
+                            visible: {
+                                opacity: [0, 1, 1, 0],
+                                x: [rx, rx * 0.5, 0, 0],
+                                y: [ry, ry * 0.5, 0, 0],
+                                scale: [0, 2, 4, 0], // explode on hit
+                                transition: { duration: 0.5, ease: "easeIn" as const }
+                            }
+                        };
 
-                                    {/* The Secondary Coral Brand Pixel Shard */}
-                                    <motion.div
-                                        initial={{ opacity: 0, x: p2X, y: p2Y, scale: 0 }}
-                                        animate={isInView ? { opacity: [0, 1, 0], x: 0, y: 0, scale: [0, 1.5, 0] } : {}}
-                                        transition={{ duration: 0.5, ease: "backIn", delay: delay + 0.05 }}
-                                        className="absolute top-1/2 left-1/2 w-1 h-1 bg-[#E8604C] shadow-[0_0_15px_#E8604C] -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
-                                    />
-                                </span>
-                            );
-                        })}
-                    </span>
-                ))}
-            </span>
-        </div>
+                        const isCoral = cIdx % 4 === 0;
+
+                        return (
+                            <motion.span
+                                key={cIdx}
+                                variants={wrapperVariants}
+                                className="relative inline-block"
+                            >
+                                <motion.span variants={charVariants} className="relative z-10 inline-block">
+                                    {char}
+                                </motion.span>
+
+                                <motion.span
+                                    variants={pVariant}
+                                    className={`absolute top-1/2 left-1/2 w-1.5 h-1.5 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none rounded-full ${isCoral
+                                        ? 'bg-[#E8604C] shadow-[0_0_15px_#E8604C]'
+                                        : 'bg-white shadow-[0_0_12px_#ffffff]'
+                                        }`}
+                                />
+                            </motion.span>
+                        );
+                    })}
+                </span>
+            ))}
+        </motion.div>
     );
 }

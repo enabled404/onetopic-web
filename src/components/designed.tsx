@@ -57,11 +57,9 @@ export default function Designed() {
                     </TextReveal>
                 </div>
 
-                <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }} transition={{ delay: 0.3 }}
-                    className="mt-5 text-lg text-[#8A8A93] leading-relaxed text-center max-w-2xl mx-auto flex justify-center">
+                <div className="mt-5 text-lg text-[#8A8A93] leading-relaxed text-center max-w-2xl mx-auto flex justify-center">
                     <PixelTransition text="Every pixel intentional. Every interaction meaningful." />
-                </motion.p>
+                </div>
 
                 {/* 3 Col Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mt-16 sm:mt-24">
