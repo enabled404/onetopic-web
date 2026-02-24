@@ -52,12 +52,33 @@ export default function MagneticCard({
         if (!el) return;
         const rect = el.getBoundingClientRect();
         const touch = e.touches[0];
+        let px = (touch.clientX - rect.left) / rect.width;
+        let py = (touch.clientY - rect.top) / rect.height;
+
+        // Force a dramatic 3D offset if the user taps near the dead-center on their phone
+        if (Math.abs(px - 0.5) < 0.25 && Math.abs(py - 0.5) < 0.25) {
+            px = 0.9;
+            py = 0.9;
+        }
+
+        setTilt({
+            x: (py - 0.5) * -tiltStrength * 1.5, // 1.5x amplifier for satisfying mobile pop
+            y: (px - 0.5) * tiltStrength * 1.5,
+        });
+        setSpot({ x: px * 100, y: py * 100 });
+    };
+
+    const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+        const el = cardRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const touch = e.touches[0];
         const px = (touch.clientX - rect.left) / rect.width;
         const py = (touch.clientY - rect.top) / rect.height;
 
         setTilt({
-            x: (py - 0.5) * -tiltStrength,
-            y: (px - 0.5) * tiltStrength,
+            x: (py - 0.5) * -tiltStrength * 1.5,
+            y: (px - 0.5) * tiltStrength * 1.5,
         });
         setSpot({ x: px * 100, y: py * 100 });
     };
@@ -70,7 +91,11 @@ export default function MagneticCard({
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={handleLeave}
             onTouchStart={handleTouchStart}
-            onTouchEnd={() => setTimeout(() => setHovering(false), 1500)}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={() => {
+                setTilt({ x: 0, y: 0 });
+                setTimeout(() => setHovering(false), 1500);
+            }}
             onClick={() => { }} // Forces iOS Safari to apply :hover state
             tabIndex={0} // Makes it focusable to trigger and hold interactive states
             style={{
