@@ -44,17 +44,17 @@ export default function HolographicLogo() {
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="relative cursor-pointer group w-56 h-56 md:w-64 md:h-64 flex items-center justify-center transform-style-3d"
+                className="relative cursor-pointer group w-40 h-40 md:w-48 md:h-48 flex items-center justify-center transform-style-3d"
                 style={{
                     rotateX,
                     rotateY,
                 }}
             >
                 {/* Master Ambient Bloom */}
-                <div className="absolute inset-0 bg-[#E8604C] rounded-full blur-[70px] opacity-10 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none" />
+                <div className="absolute inset-0 bg-[#E8604C] rounded-full blur-[60px] opacity-10 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none" />
 
                 {/* 3D Glass Pedestal Base */}
-                <div className="absolute inset-2 md:inset-4 rounded-[2rem] border border-white/10 bg-white/[0.01] backdrop-blur-2xl shadow-[0_40px_80px_rgba(0,0,0,0.6)] transition-transform duration-700 overflow-hidden">
+                <div className="absolute inset-2 md:inset-4 rounded-[1.5rem] md:rounded-[2rem] border border-white/10 bg-white/[0.01] backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform duration-700 overflow-hidden">
                     {/* Hover glare highlight */}
                     <div
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-overlay"
@@ -66,19 +66,19 @@ export default function HolographicLogo() {
                 </div>
 
                 {/* Outer Rotating Rings (Holographic Tech Vibe) */}
-                <div className="absolute inset-0 rounded-[2rem] border border-white/5 border-t-[#E8604C]/30 animate-[spin_10s_linear_infinite]" />
-                <div className="absolute inset-[-10px] rounded-[2.5rem] border border-white/5 border-b-white/20 animate-[spin_15s_linear_infinite_reverse]" />
+                <div className="absolute inset-0 rounded-[1.5rem] md:rounded-[2rem] border border-white/5 border-t-[#E8604C]/30 animate-[spin_10s_linear_infinite]" />
+                <div className="absolute inset-[-10px] rounded-[2rem] md:rounded-[2.5rem] border border-white/5 border-b-white/20 animate-[spin_15s_linear_infinite_reverse]" />
 
                 {/* The Floating Logo Asset + 3D Text */}
                 <motion.div
-                    className="relative z-20 flex flex-col items-center justify-center gap-3 transition-transform duration-500 group-hover:scale-105"
+                    className="relative z-20 flex flex-col items-center justify-center gap-2 transition-transform duration-500 group-hover:scale-105"
                     style={{
                         x: innerX,
                         y: innerY,
                         translateZ: 30, // 3D pop effect
                     }}
                 >
-                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(232,96,76,0.4)] transition-transform duration-500 group-hover:-translate-y-1">
+                    <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(232,96,76,0.3)] transition-transform duration-500 group-hover:-translate-y-1">
                         <Image
                             src="/logo.png"
                             alt="OneTopic Logo"
@@ -91,16 +91,16 @@ export default function HolographicLogo() {
                     </div>
 
                     {/* The 3D S-Tier Brand Text */}
-                    <div className="text-lg md:text-xl font-bold tracking-[0.15em] text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-500 group-hover:text-white group-hover:drop-shadow-[0_0_25px_rgba(232,96,76,0.8)] group-hover:translate-y-1 pl-1">
+                    <div className="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-white/70 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] transition-all duration-500 group-hover:text-white/90 group-hover:drop-shadow-[0_0_15px_rgba(232,96,76,0.4)] group-hover:translate-y-0.5 pl-1 opacity-80">
                         ONETOPIC
                     </div>
                 </motion.div>
 
                 {/* Hover UI Bracket Accents */}
-                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#E8604C]/0 group-hover:border-[#E8604C]/80 transition-all duration-300 -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
-                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-[#E8604C]/0 group-hover:border-[#E8604C]/80 transition-all duration-300 translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-[#E8604C]/0 group-hover:border-[#E8604C]/80 transition-all duration-300 -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-[#E8604C]/0 group-hover:border-[#E8604C]/80 transition-all duration-300 translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#E8604C]/0 group-hover:border-[#E8604C]/80 transition-all duration-300 -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#E8604C]/0 group-hover:border-[#E8604C]/80 transition-all duration-300 translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#E8604C]/0 group-hover:border-[#E8604C]/80 transition-all duration-300 -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#E8604C]/0 group-hover:border-[#E8604C]/80 transition-all duration-300 translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
 
             </motion.div>
         </div>
