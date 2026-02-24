@@ -74,7 +74,7 @@ export default function Features() {
                                         <feature.icon className="w-5 h-5" style={{ color: feature.color }} strokeWidth={1.8} />
                                     </div>
                                     <div className="min-w-0">
-                                        <span className="font-mono text-[11px] font-bold tracking-[0.08em] uppercase text-coral block mb-3">
+                                        <span className="font-mono text-xs sm:text-[13px] font-black tracking-[0.25em] uppercase text-coral block mb-4 drop-shadow-[0_0_12px_rgba(232,96,76,0.5)]">
                                             {feature.tag}
                                         </span>
                                         <h3 className="text-xl font-bold text-heading mb-3 tracking-tight leading-snug">{feature.title}</h3>
