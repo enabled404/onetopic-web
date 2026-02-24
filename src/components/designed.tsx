@@ -140,9 +140,8 @@ export default function Designed() {
 
                                     {/* Typography Layout */}
                                     <div className="mt-auto relative z-20">
-                                        <span className="font-mono text-[11px] font-bold tracking-[0.15em] uppercase mb-4 flex items-center gap-2"
+                                        <span className="font-mono text-xs sm:text-[13px] font-black tracking-[0.25em] uppercase block mb-4 drop-shadow-[0_0_12px_rgba(255,255,255,0.1)]"
                                             style={{ color: card.color }}>
-                                            <span className="w-1.5 h-1.5 rounded-full animate-pulse shadow-[0_0_10px_currentColor]" style={{ background: card.color }} />
                                             {card.tag}
                                         </span>
 

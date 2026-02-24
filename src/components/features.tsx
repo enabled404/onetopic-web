@@ -116,9 +116,8 @@ export default function Features() {
 
                                         <div className="min-w-0 flex-1">
                                             {/* The Upgraded Typography Component we just did */}
-                                            <span className="font-mono text-xs sm:text-[13px] font-black tracking-[0.25em] uppercase block mb-4 flex items-center gap-3 drop-shadow-[0_0_12px_rgba(255,255,255,0.1)]"
+                                            <span className="font-mono text-xs sm:text-[13px] font-black tracking-[0.25em] uppercase block mb-4 drop-shadow-[0_0_12px_rgba(255,255,255,0.1)]"
                                                 style={{ color: feature.color }}>
-                                                <span className="w-1.5 h-1.5 rounded-full animate-pulse shadow-[0_0_10px_currentColor]" style={{ background: feature.color }} />
                                                 {feature.tag}
                                             </span>
 
