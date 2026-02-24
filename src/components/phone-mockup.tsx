@@ -148,7 +148,10 @@ export default function PhoneMockup() {
                         </div>
 
                         {/* ─── App Content ─── */}
-                        <div className="h-full bg-[#F8F7F5] dark:bg-[#F8F7F5] flex flex-col pt-10 pb-3 relative px-3">
+                        <div
+                            className="h-full bg-[#F8F7F5] dark:bg-[#F8F7F5] flex flex-col pt-10 pb-3 relative px-3"
+                            style={{ colorScheme: "light only", forcedColorAdjust: "none" }}
+                        >
                             <div className="flex items-center justify-center py-2 bg-white dark:bg-white border-b border-gray-100 dark:border-gray-100 -mx-3 mb-2">
                                 <div className="text-black dark:text-black font-bold text-[13px] tracking-tight">OneTopic</div>
                             </div>
