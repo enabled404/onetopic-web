@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import TextReveal from "./animations";
 import DownloadBtn from "./download-btn";
 import SectionBadge from "./ui/section-badge";
+import HolographicLogo from "./ui/holographic-logo";
 
 const APP_STORE_URL = "https://apps.apple.com/us/app/onetopic/id6754181660";
 
@@ -21,7 +22,14 @@ export default function CTA() {
                 {/* S-Tier Section Header */}
                 <SectionBadge title="Join the Movement" />
 
-                <div className="mt-8">
+                {/* S-Tier 3D Interactive Logo */}
+                <div className="mt-8 mb-4">
+                    <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 100, damping: 20 }}>
+                        <HolographicLogo />
+                    </motion.div>
+                </div>
+
+                <div className="mt-4">
                     <TextReveal className="text-5xl sm:text-7xl font-bold tracking-tighter leading-none text-heading text-center" delay={0.1}>
                         Ready to join the
                     </TextReveal>
