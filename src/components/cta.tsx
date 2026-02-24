@@ -34,7 +34,7 @@ export default function CTA() {
                         Ready to join the
                     </TextReveal>
                     <TextReveal className="text-5xl sm:text-7xl font-bold tracking-tighter leading-none text-coral text-center" delay={0.2}>
-                        real conversation?
+                        Real Conversation?
                     </TextReveal>
                 </div>
 
