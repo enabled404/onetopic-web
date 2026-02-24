@@ -216,11 +216,14 @@ export default function HowItWorks() {
             {/* Community note - Elevated aesthetic */}
             <motion.div initial={{ opacity: 0, y: 20, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
-                className="mt-28 text-center flex justify-center relative z-10">
-                <div className="relative inline-flex group cursor-default">
-                    <MagneticCard className="relative flex items-center gap-4 px-8 py-5 rounded-full border border-white/10 bg-[#08080A]/80 backdrop-blur-xl" tiltStrength={8} variant="dark">
-                        <Users className="w-5 h-5 text-[#E8604C] shrink-0 animate-pulse" strokeWidth={2} />
-                        <span className="text-[15px] text-white/90 font-medium tracking-wide">Propose topics. Vote on what matters. <span className="text-white font-bold drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">The community decides.</span></span>
+                className="mt-28 text-center flex justify-center relative z-10 px-4 sm:px-0">
+                <div className="relative w-full max-w-fit group cursor-default">
+                    <MagneticCard className="relative flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-6 py-5 sm:px-8 sm:py-5 rounded-[24px] sm:rounded-full border border-white/10 bg-[#08080A]/80 backdrop-blur-xl" tiltStrength={8} variant="dark">
+                        <Users className="w-6 h-6 sm:w-5 sm:h-5 text-[#E8604C] shrink-0 animate-pulse" strokeWidth={2} />
+                        <span className="text-[14px] sm:text-[15px] text-white/90 font-medium tracking-wide">
+                            Propose topics. Vote on what matters. <br className="block sm:hidden" />
+                            <span className="text-white font-bold drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">The community decides.</span>
+                        </span>
                     </MagneticCard>
                 </div>
             </motion.div>
