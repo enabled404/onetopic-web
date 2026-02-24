@@ -6,6 +6,7 @@ import { MessageCircle, PenLine, Users } from "lucide-react";
 import MagneticCard from "./magnetic-card";
 import TextReveal from "./animations";
 import AuroraOrb from "./aurora-orb";
+import SectionBadge from "./ui/section-badge";
 
 const steps = [
     {
@@ -119,27 +120,7 @@ export default function HowItWorks() {
 
             <div className="relative z-10 container-standard">
                 {/* Prominent S-Tier Glass Badge Header */}
-                <div className="mb-16 flex justify-center">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/[0.03] border border-white/[0.08] shadow-[0_0_20px_rgba(255,255,255,0.05)_inset,0_4px_20px_rgba(0,0,0,0.5)] backdrop-blur-md relative overflow-hidden"
-                    >
-                        {/* Shimmer trace */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_4s_infinite_ease-in-out]" />
-
-                        {/* Glowing dot left */}
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/90 shadow-[0_0_8px_rgba(255,255,255,0.9)] animate-[pulse_3s_infinite]" />
-
-                        <span className="text-[12px] font-bold tracking-[0.3em] uppercase text-white/90 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] relative mt-px">
-                            How It Works
-                        </span>
-
-                        {/* Glowing dot right */}
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/90 shadow-[0_0_8px_rgba(255,255,255,0.9)] animate-[pulse_3s_infinite_1s]" />
-                    </motion.div>
-                </div>
+                <SectionBadge title="How It Works" />
                 <div className="mt-6">
                     <TextReveal className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter leading-[1.1] text-white text-center text-balance" delay={0.1}>
                         Dead simple.

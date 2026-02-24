@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { Scroll, Megaphone, Theater } from "lucide-react";
 import MagneticCard from "./magnetic-card";
 import TextReveal from "./animations";
+import SectionBadge from "./ui/section-badge";
 
 const problems = [
     {
@@ -143,27 +144,7 @@ export default function Problem() {
 
             <div className="relative z-10 container-standard">
                 {/* Prominent S-Tier Glass Badge Header */}
-                <div className="mb-14 flex justify-center">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="inline-flex items-center gap-4 px-8 py-3.5 rounded-full bg-[#08080A]/90 border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.03)_inset,0_0_20px_rgba(0,0,0,0.8)] backdrop-blur-xl relative overflow-hidden group"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#E8604C]/0 via-[#E8604C]/10 to-[#E8604C]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-                        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-[shimmer_3s_infinite]" />
-                        <div className="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-full animate-[shimmer_3s_infinite_reverse]" />
-
-                        <div className="w-2 h-2 rounded-full bg-[#E8604C] shadow-[0_0_12px_rgba(232,96,76,0.9)] animate-pulse" />
-
-                        <span className="text-[13px] font-black tracking-[0.4em] uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] relative mt-px">
-                            The Problem
-                        </span>
-
-                        <div className="w-2 h-2 rounded-full bg-[#E8604C] shadow-[0_0_12px_rgba(232,96,76,0.9)] animate-[pulse_2s_infinite_1s]" />
-                    </motion.div>
-                </div>
+                <SectionBadge title="The Problem" />
 
                 <div className="mt-6">
                     <TextReveal className="text-5xl sm:text-6xl font-bold tracking-tighter leading-none text-heading text-center" delay={0.1}>
