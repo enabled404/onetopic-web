@@ -166,7 +166,7 @@ export default function HowItWorks() {
                                         className="w-14 h-14 rounded-2xl bg-[#08080A] border-[1.5px] border-white/10 flex flex-col items-center justify-center relative shadow-[0_0_30px_rgba(0,0,0,0.8)] overflow-hidden group cursor-default"
                                     >
                                         {/* Glowing core logic based on step color */}
-                                        <div className="absolute inset-0 opacity-20 group-hover:opacity-60 transition-opacity duration-500"
+                                        <div className="absolute inset-0 opacity-20 group-hover:opacity-60 group-data-[hovering=true]:opacity-60 transition-opacity duration-500"
                                             style={{ background: `radial-gradient(circle at 50% 50%, ${step.color}, transparent 70%)` }} />
                                         <AuroraOrb size={8} />
                                         <span className="text-[10px] font-bold tracking-widest text-white/90 mt-1 relative z-10">{step.num}</span>
@@ -183,26 +183,26 @@ export default function HowItWorks() {
                                     <MagneticCard className="p-8 sm:p-10 group relative overflow-hidden" variant="dark" tiltStrength={5}>
 
                                         {/* Interactive hover spotlight inside card */}
-                                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 group-data-[hovering=true]:opacity-100 transition-opacity duration-700 pointer-events-none"
                                             style={{ background: `radial-gradient(circle at top ${isEven ? 'right' : 'left'}, ${step.color}15, transparent 60%)` }} />
 
                                         <div className={`flex flex-col ${isEven ? 'md:items-end' : 'items-start'} mb-6 relative z-10`}>
-                                            <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1"
+                                            <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-data-[hovering=true]:scale-110 group-hover:-translate-y-1 group-data-[hovering=true]:-translate-y-1"
                                                 style={{ background: `${step.color}18`, border: `1px solid ${step.color}30`, boxShadow: `0 8px 32px ${step.color}15` }}>
                                                 <step.icon className="w-6 h-6" style={{ color: step.color }} strokeWidth={2} />
                                             </div>
                                         </div>
 
-                                        <h3 className="text-3xl sm:text-[32px] md:text-4xl font-extrabold text-white mb-4 tracking-tight leading-[1.1] relative z-10 group-hover:text-glow transition-all duration-300" style={{ textShadow: `0 0 20px ${step.color}40` }}>
+                                        <h3 className="text-3xl sm:text-[32px] md:text-4xl font-extrabold text-white mb-4 tracking-tight leading-[1.1] relative z-10 group-hover:text-glow group-data-[hovering=true]:text-glow transition-all duration-300" style={{ textShadow: `0 0 20px ${step.color}40` }}>
                                             {step.title}
                                         </h3>
 
-                                        <p className="text-[16px] text-[#8A8A93] leading-relaxed relative z-10 group-hover:text-white/80 transition-colors duration-300">
+                                        <p className="text-[16px] text-[#8A8A93] leading-relaxed relative z-10 group-hover:text-white/80 group-data-[hovering=true]:text-white/80 transition-colors duration-300">
                                             {step.desc}
                                         </p>
 
                                         {/* Accent line based on step color */}
-                                        <div className={`absolute bottom-0 h-1 transition-all duration-500 rounded-full opacity-50 group-hover:opacity-100 group-hover:w-1/2 w-0 ${isEven ? 'right-0 bg-gradient-to-l' : 'left-0 bg-gradient-to-r'} from-transparent to-${step.color}`}
+                                        <div className={`absolute bottom-0 h-1 transition-all duration-500 rounded-full opacity-50 group-hover:opacity-100 group-data-[hovering=true]:opacity-100 group-hover:w-1/2 group-data-[hovering=true]:w-1/2 w-0 ${isEven ? 'right-0 bg-gradient-to-l' : 'left-0 bg-gradient-to-r'} from-transparent to-${step.color}`}
                                             style={{ backgroundImage: `linear-gradient(to ${isEven ? 'left' : 'right'}, transparent, ${step.color})` }} />
                                     </MagneticCard>
                                 </div>

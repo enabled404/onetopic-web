@@ -102,6 +102,7 @@ export default function MagneticCard({
     return (
         <motion.div
             ref={cardRef}
+            data-hovering={hovering}
             className={`${isDark ? "card-dark" : "card-light"} group relative ${className}`}
             onMouseMove={handleMove}
             onMouseEnter={() => {
