@@ -12,14 +12,14 @@ export default function Hero() {
     return (
         <section className="relative min-h-[100svh] h-auto flex flex-col items-center justify-center overflow-x-clip bg-[#030304] pt-24 sm:pt-28 pb-4 sm:pb-8 px-4 sm:px-6">
 
-            {/* Ambient Background Glows — strong enough to be clearly visible */}
-            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1400px] h-[900px] opacity-[0.35] blur-[100px] pointer-events-none"
-                style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,96,76,0.6), rgba(232,96,76,0.15) 45%, transparent 70%)" }} />
-            <div className="absolute bottom-[-5%] left-1/4 w-[700px] h-[700px] opacity-[0.2] blur-[80px] pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(139,92,246,0.5), transparent 60%)" }} />
+            {/* Ambient Background Glows — subtle and refined */}
+            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1400px] h-[900px] opacity-[0.15] blur-[120px] pointer-events-none"
+                style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,96,76,0.4), rgba(232,96,76,0.05) 45%, transparent 70%)" }} />
+            <div className="absolute bottom-[-5%] left-1/4 w-[700px] h-[700px] opacity-[0.15] blur-[100px] pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(139,92,246,0.4), transparent 60%)" }} />
             {/* Focused warm glow behind phone area */}
-            <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] opacity-[0.25] blur-[80px] pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(232,96,76,0.5), rgba(255,154,139,0.2) 40%, transparent 65%)" }} />
+            <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] opacity-[0.1] blur-[100px] pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(232,96,76,0.3), rgba(255,154,139,0.1) 40%, transparent 65%)" }} />
 
             {/* Grid pattern removed — was creating sharp lines near the phone */}
 
