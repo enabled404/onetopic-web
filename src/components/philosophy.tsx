@@ -6,7 +6,7 @@ import TextReveal from "./animations";
 
 export default function Philosophy() {
     return (
-        <section className="relative py-20 sm:py-24 section-primary overflow-hidden">
+        <section className="relative py-20 sm:py-24 section-primary">
             {/* Ambient glows — gives depth instead of flat black */}
             <div className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] opacity-[0.18] blur-[100px] pointer-events-none"
                 style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,96,76,0.5), rgba(232,96,76,0.1) 50%, transparent 70%)" }} />

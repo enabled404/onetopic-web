@@ -39,7 +39,7 @@ const features = [
 
 export default function Features() {
     return (
-        <section id="features" className="relative py-16 sm:py-20 section-elevated overflow-hidden">
+        <section id="features" className="relative py-16 sm:py-20 section-elevated">
             {/* Dot grid */}
             <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
 

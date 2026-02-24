@@ -10,7 +10,7 @@ const APP_STORE_URL = "https://apps.apple.com/us/app/onetopic/id6754181660";
 
 export default function CTA() {
     return (
-        <section className="relative py-20 sm:py-24 section-deep overflow-hidden">
+        <section className="relative py-20 sm:py-24 section-deep">
             {/* Grid */}
             <div className="absolute inset-0 bg-grid-dark opacity-30 pointer-events-none" />
 

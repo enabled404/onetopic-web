@@ -25,7 +25,7 @@ const socials = [
 
 export default function Footer() {
     return (
-        <footer className="relative py-16 sm:py-20 overflow-hidden" style={{ background: "#050506" }}>
+        <footer className="relative py-16 sm:py-20" style={{ background: "#050506" }}>
             {/* Layered geometric background */}
             <div className="absolute inset-0 bg-geo-matrix opacity-30 pointer-events-none" />
             <div className="absolute inset-0 bg-dot-grid opacity-10 pointer-events-none" />

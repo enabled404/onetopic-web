@@ -107,7 +107,7 @@ export default function HowItWorks() {
     const laserTop = useTransform(scrollYProgress, [0.1, 0.85], ["0%", "85%"]);
 
     return (
-        <section ref={ref} id="how-it-works" className="relative py-16 sm:py-20 section-rich overflow-hidden">
+        <section ref={ref} id="how-it-works" className="relative py-16 sm:py-20 section-rich">
             {/* Ambient glows */}
             <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[500px] opacity-[0.14] blur-[90px] pointer-events-none"
                 style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,96,76,0.45), transparent 65%)" }} />

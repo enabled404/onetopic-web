@@ -36,7 +36,7 @@ const cards = [
 
 export default function Designed() {
     return (
-        <section id="about" className="relative py-16 sm:py-20 section-elevated overflow-hidden">
+        <section id="about" className="relative py-16 sm:py-20 section-elevated">
             {/* Ambient glows */}
             <div className="absolute top-[-5%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-[0.12] blur-[80px] pointer-events-none"
                 style={{ background: "radial-gradient(ellipse, rgba(232,96,76,0.4), transparent 65%)" }} />
