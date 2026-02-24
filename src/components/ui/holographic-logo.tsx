@@ -71,7 +71,7 @@ export default function HolographicLogo() {
 
                 {/* The Floating Logo Asset + 3D Text */}
                 <motion.div
-                    className="relative z-20 flex flex-col items-center justify-center gap-5 transition-transform duration-500 group-hover:scale-105"
+                    className="relative z-20 flex flex-col items-center justify-center gap-3 transition-transform duration-500 group-hover:scale-105"
                     style={{
                         x: innerX,
                         y: innerY,
@@ -91,7 +91,7 @@ export default function HolographicLogo() {
                     </div>
 
                     {/* The 3D S-Tier Brand Text */}
-                    <div className="text-xl md:text-2xl font-bold tracking-[0.2em] md:tracking-[0.25em] text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-500 group-hover:text-white group-hover:drop-shadow-[0_0_25px_rgba(232,96,76,0.8)] group-hover:translate-y-1 pl-1">
+                    <div className="text-lg md:text-xl font-bold tracking-[0.15em] text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-500 group-hover:text-white group-hover:drop-shadow-[0_0_25px_rgba(232,96,76,0.8)] group-hover:translate-y-1 pl-1">
                         ONETOPIC
                     </div>
                 </motion.div>
