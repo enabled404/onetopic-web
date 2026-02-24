@@ -47,14 +47,6 @@ export const metadata: Metadata = {
     siteName: "OneTopic",
     type: "website",
     locale: "en_US",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "OneTopic - One question. One conversation.",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -63,7 +55,6 @@ export const metadata: Metadata = {
       "Every day, the world debates. No feed. No noise. Just one question that matters.",
     site: "@onetopic",
     creator: "@onetopic",
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,
