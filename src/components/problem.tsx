@@ -77,32 +77,66 @@ function StatCounter({ item, index }: { item: typeof problems[0]; index: number 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: index * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.7, delay: index * 0.15, type: "spring", stiffness: 100 }}
         >
-            <MagneticCard className="p-0 h-full flex flex-col overflow-hidden" variant="dark">
-                {/* ── Top: Icon + Content ── */}
-                <div className="p-8 sm:p-10 flex-1 flex flex-col relative">
-                    {/* Subtle color glow behind icon */}
-                    <div
-                        className="absolute top-6 left-6 w-20 h-20 rounded-full blur-[30px] opacity-20 pointer-events-none"
-                        style={{ background: item.color }}
-                    />
+            <MagneticCard className="h-full flex flex-col overflow-hidden bg-[#030304] border border-white/[0.04] rounded-2xl group transition-colors duration-700 hover:border-white/[0.08] shadow-[0_0_0_0_rgba(0,0,0,0)] hover:shadow-[0_20px_40px_-20px_rgba(0,0,0,0.8)]" variant="dark">
+                {/* Background Dot Matrix illuminating on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none mix-blend-screen"
+                    style={{
+                        backgroundImage: `radial-gradient(${item.color} 1.5px, transparent 1.5px)`,
+                        backgroundSize: '20px 20px',
+                        WebkitMaskImage: 'radial-gradient(ellipse at center, black 10%, transparent 80%)'
+                    }}
+                />
 
-                    <div
-                        className="icon-box mb-5 w-12 h-12 relative z-10"
-                        style={{ background: `${item.color}18`, borderColor: `${item.color}30` }}
-                    >
-                        <item.icon className="w-5 h-5" style={{ color: item.color }} strokeWidth={1.8} />
+                {/* Glassy Noise Overlay for premium texture */}
+                <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none"
+                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}
+                />
+
+                {/* Tech Corner Crosshairs visible on hover */}
+                <div className="absolute top-5 left-5 w-2 h-2 border-t border-l border-white/0 group-hover:border-white/20 transition-colors duration-500" />
+                <div className="absolute top-5 right-5 w-2 h-2 border-t border-r border-white/0 group-hover:border-white/20 transition-colors duration-500" />
+                <div className="absolute bottom-5 left-5 w-2 h-2 border-b border-l border-white/0 group-hover:border-white/20 transition-colors duration-500 z-20" />
+                <div className="absolute bottom-5 right-5 w-2 h-2 border-b border-r border-white/0 group-hover:border-white/20 transition-colors duration-500 z-20" />
+
+                {/* ── Top: Icon + Content ── */}
+                <div className="p-8 sm:p-10 flex-1 flex flex-col relative z-10 transition-transform duration-700 group-hover:-translate-y-1">
+
+                    {/* Icon Pedestal (3D Glass) */}
+                    <div className="relative mb-8 w-14 h-14">
+                        {/* Underlying Ambient Bloom */}
+                        <div
+                            className="absolute inset-[-10px] rounded-full blur-[20px] opacity-20 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none"
+                            style={{ background: item.color }}
+                        />
+
+                        {/* Physical Glass Button Body */}
+                        <div
+                            className="absolute inset-0 rounded-2xl flex items-center justify-center border border-white/5 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] overflow-hidden transition-transform duration-700 group-hover:scale-110 group-hover:-translate-y-2 group-hover:rotate-[5deg]"
+                            style={{ background: `linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%), ${item.color}15` }}
+                        >
+                            {/* Inner Top Glass Highlight */}
+                            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                            {/* Icon */}
+                            <item.icon className="w-6 h-6 relative z-10 transform transition-transform duration-700 group-hover:scale-110" style={{ color: item.color }} strokeWidth={1.8} />
+                        </div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-heading mb-3 tracking-tight">{item.title}</h3>
-                    <p className="text-[15px] text-[#9A9A9F] leading-relaxed flex-1">{item.desc}</p>
+                    <h3 className="text-2xl font-bold text-white mb-3 tracking-tight leading-snug transition-all duration-500 group-hover:translate-x-1"
+                        style={{ textShadow: `0 0 40px ${item.color}00` }}>
+                        {item.title}
+                    </h3>
+
+                    <p className="text-[15px] text-[#8A8A93] leading-relaxed flex-1 transition-all duration-500 group-hover:text-[#A0A0A5] group-hover:translate-x-1">
+                        {item.desc}
+                    </p>
                 </div>
 
                 {/* ── Bottom: Animated Stat ── */}
                 <div
                     ref={ref}
-                    className="px-8 sm:px-10 py-6 relative"
+                    className="px-8 sm:px-10 py-6 relative z-10 transition-transform duration-700 group-hover:-translate-y-1"
                     style={{
                         borderTop: `1px solid ${item.color}15`,
                         background: `linear-gradient(to right, ${item.color}08, transparent 70%)`,
@@ -115,21 +149,29 @@ function StatCounter({ item, index }: { item: typeof problems[0]; index: number 
                     />
                     <div className="flex items-baseline gap-1">
                         <span
-                            className="text-4xl font-mono font-bold tracking-tight tabular-nums"
+                            className="text-4xl font-mono font-bold tracking-tight tabular-nums transition-transform duration-500 group-hover:scale-105 origin-left"
                             style={{ color: item.color }}
                         >
                             {count}
                         </span>
                         <span
-                            className="text-2xl font-mono font-bold"
+                            className="text-2xl font-mono font-bold transition-opacity duration-500 group-hover:opacity-100"
                             style={{ color: item.color, opacity: 0.7 }}
                         >
                             {item.statSuffix}
                         </span>
                     </div>
-                    <div className="text-[11px] uppercase tracking-[0.08em] text-[#6A6A72] font-mono mt-1">
+                    <div className="text-[11px] uppercase tracking-[0.08em] text-[#6A6A72] font-mono mt-1 group-hover:text-white/60 transition-colors duration-500">
                         {item.statLabel}
                     </div>
+                </div>
+
+                {/* Animated Bottom Laser Sweep */}
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/[0.02] overflow-hidden z-20">
+                    <div
+                        className="h-full w-full -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out opacity-0 group-hover:opacity-100"
+                        style={{ background: `linear-gradient(90deg, transparent, ${item.color}, transparent)` }}
+                    />
                 </div>
             </MagneticCard>
         </motion.div>
