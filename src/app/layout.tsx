@@ -127,7 +127,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} antialiased font-sans selection:bg-[#E8604C] selection:text-white`}
+        className={`${inter.variable} antialiased font-sans selection:bg-[#E8604C] selection:text-white overflow-x-clip`}
       >
         {children}
       </body>

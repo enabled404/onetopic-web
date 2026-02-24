@@ -19,6 +19,8 @@ export default function MagneticCard({
     variant = "light",
 }: MagneticCardProps) {
     const cardRef = useRef<HTMLDivElement>(null);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
     const [tilt, setTilt] = useState({ x: 0, y: 0 });
     const [spot, setSpot] = useState({ x: 50, y: 50 });
     const [hovering, setHovering] = useState(false);
@@ -28,6 +30,7 @@ export default function MagneticCard({
     const borderGlow = isDark ? "rgba(255, 255, 255, 0.12)" : "rgba(232, 96, 76, 0.20)";
 
     const handleMove = (e: MouseEvent<HTMLDivElement>) => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
         const el = cardRef.current;
         if (!el) return;
         const rect = el.getBoundingClientRect();
@@ -47,6 +50,7 @@ export default function MagneticCard({
     };
 
     const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
         setHovering(true);
         const el = cardRef.current;
         if (!el) return;
@@ -69,6 +73,7 @@ export default function MagneticCard({
     };
 
     const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
         const el = cardRef.current;
         if (!el) return;
         const rect = el.getBoundingClientRect();
@@ -88,13 +93,19 @@ export default function MagneticCard({
             ref={cardRef}
             className={`${isDark ? "card-dark" : "card-light"} group relative ${className}`}
             onMouseMove={handleMove}
-            onMouseEnter={() => setHovering(true)}
+            onMouseEnter={() => {
+                if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                setHovering(true);
+            }}
             onMouseLeave={handleLeave}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={() => {
-                setTilt({ x: 0, y: 0 });
-                setTimeout(() => setHovering(false), 1500);
+                // Hold the majestic 3D state for 1.2 seconds so the user actually sees the physical tilt they caused
+                timeoutRef.current = setTimeout(() => {
+                    setTilt({ x: 0, y: 0 });
+                    setHovering(false);
+                }, 1200);
             }}
             onClick={() => { }} // Forces iOS Safari to apply :hover state
             tabIndex={0} // Makes it focusable to trigger and hold interactive states
