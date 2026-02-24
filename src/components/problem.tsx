@@ -180,7 +180,7 @@ function StatCounter({ item, index }: { item: typeof problems[0]; index: number 
 
 export default function Problem() {
     return (
-        <section className="relative py-16 sm:py-20 section-deep">
+        <section className="relative pt-8 sm:pt-12 pb-16 sm:pb-20 section-deep">
             {/* Grid */}
             <div className="absolute inset-0 bg-grid-dark opacity-30 pointer-events-none" />
 
