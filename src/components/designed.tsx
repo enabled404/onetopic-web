@@ -59,7 +59,7 @@ export default function Designed() {
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }} transition={{ delay: 0.3 }}
                     className="mt-5 text-lg text-[#8A8A93] leading-relaxed text-center max-w-2xl mx-auto">
-                    Every pixel intentional. Every interaction meaningful.
+                    <span className="text-white font-bold">Every pixel intentional. Every interaction meaningful.</span>
                 </motion.p>
 
                 {/* 3 Col Grid */}

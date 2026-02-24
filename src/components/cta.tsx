@@ -34,7 +34,8 @@ export default function CTA() {
                     whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     viewport={{ once: true }} transition={{ delay: 0.35 }}
                     className="mt-8 text-xl sm:text-2xl text-[#8A8A93] leading-relaxed text-center max-w-2xl mx-auto mb-12">
-                    Be part of the first global community where every voice matters equally.
+                    Be part of the first global community where<br />
+                    <span className="text-white font-bold">every voice matters equally.</span>
                 </motion.p>
 
                 <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
