@@ -193,7 +193,7 @@ export default function HowItWorks() {
                                             </div>
                                         </div>
 
-                                        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight leading-tight relative z-10 group-hover:text-glow transition-all duration-300" style={{ textShadow: `0 0 20px ${step.color}40` }}>
+                                        <h3 className="text-3xl sm:text-[32px] md:text-4xl font-extrabold text-white mb-4 tracking-tight leading-[1.1] relative z-10 group-hover:text-glow transition-all duration-300" style={{ textShadow: `0 0 20px ${step.color}40` }}>
                                             {step.title}
                                         </h3>
 

@@ -46,6 +46,22 @@ export default function MagneticCard({
         setHovering(false);
     };
 
+    const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+        setHovering(true);
+        const el = cardRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const touch = e.touches[0];
+        const px = (touch.clientX - rect.left) / rect.width;
+        const py = (touch.clientY - rect.top) / rect.height;
+
+        setTilt({
+            x: (py - 0.5) * -tiltStrength,
+            y: (px - 0.5) * tiltStrength,
+        });
+        setSpot({ x: px * 100, y: py * 100 });
+    };
+
     return (
         <motion.div
             ref={cardRef}
@@ -53,9 +69,14 @@ export default function MagneticCard({
             onMouseMove={handleMove}
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={handleLeave}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={() => setTimeout(() => setHovering(false), 1500)}
+            onClick={() => { }} // Forces iOS Safari to apply :hover state
+            tabIndex={0} // Makes it focusable to trigger and hold interactive states
             style={{
                 transformStyle: "preserve-3d",
                 perspective: "800px",
+                WebkitTapHighlightColor: "transparent",
             }}
             animate={{
                 rotateX: tilt.x,
