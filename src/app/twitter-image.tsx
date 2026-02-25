@@ -1,6 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
 export const alt = 'OneTopic - The future of conversation';
 export const size = {
     width: 1200,
