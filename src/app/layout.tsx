@@ -47,6 +47,7 @@ export const metadata: Metadata = {
     siteName: "OneTopic",
     type: "website",
     locale: "en_US",
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
@@ -55,6 +56,7 @@ export const metadata: Metadata = {
       "Every day, the world debates. No feed. No noise. Just one question that matters.",
     site: "@onetopic",
     creator: "@onetopic",
+    images: ["/twitter-image"],
   },
   robots: {
     index: true,

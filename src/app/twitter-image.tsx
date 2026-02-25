@@ -25,26 +25,15 @@ export default async function Image() {
                     fontFamily: 'sans-serif',
                 }}
             >
-                {/* Abstract Ambient Glows */}
+                {/* Abstract Ambient Glows (Linear Gradient is required for Satori engine standard) */}
                 <div
                     style={{
                         position: 'absolute',
-                        top: '-20%',
-                        left: '50%',
-                        width: '1800px',
-                        height: '1200px',
-                        background: 'radial-gradient(circle, rgba(232,96,76,0.25) 0%, rgba(232,96,76,0.05) 45%, transparent 70%)',
-                        transform: 'translateX(-50%)',
-                    }}
-                />
-                <div
-                    style={{
-                        position: 'absolute',
-                        bottom: '-10%',
-                        left: '20%',
-                        width: '1000px',
-                        height: '1000px',
-                        background: 'radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 60%)',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        background: 'linear-gradient(135deg, rgba(232,96,76,0.15) 0%, rgba(3,3,4,1) 35%, rgba(3,3,4,1) 65%, rgba(139,92,246,0.1) 100%)',
                     }}
                 />
 
