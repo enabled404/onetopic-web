@@ -49,13 +49,13 @@ export default async function Image() {
                 />
 
                 {/* Central Brand Lockup */}
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '30px', zIndex: 10 }}>
-                    <span style={{ fontWeight: '900', fontSize: '110px', letterSpacing: '-0.05em', color: '#FFFFFF' }}>One</span>
-                    <span style={{ fontWeight: '900', fontSize: '110px', letterSpacing: '-0.05em', color: '#E8604C' }}>Topic</span>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '30px' }}>
+                    <span style={{ fontWeight: 900, fontSize: '110px', letterSpacing: '-5px', color: '#FFFFFF' }}>One</span>
+                    <span style={{ fontWeight: 900, fontSize: '110px', letterSpacing: '-5px', color: '#E8604C' }}>Topic</span>
                 </div>
 
                 {/* Subtitle */}
-                <div style={{ fontSize: '42px', color: '#8A8A93', fontWeight: 500, letterSpacing: '-0.02em', zIndex: 10 }}>
+                <div style={{ fontSize: '42px', color: '#8A8A93', fontWeight: 500, letterSpacing: '-1px' }}>
                     One question. One conversation. The whole world.
                 </div>
             </div>
